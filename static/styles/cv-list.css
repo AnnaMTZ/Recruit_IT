@@ -1,58 +1,13 @@
-/* DEZE CSS REGELS KUNNEN MOGELIJK VERWIJDERD WORDEN BIJ HET SAMENVOEGEN */
-
-* {
-    margin: 0;
-    padding: 0;
+section#cv-list {
+    padding-top:20px;
+    /* max-width: 600px; */
+    margin:auto;
 }
 
-body {
-    font-family: "Ubuntu", sans-serif;
+section#cv-list ul{
+    height:80vh;
+    overflow:auto;
 }
-
-a.button {
-    background: black;
-    padding: 20px 22px;
-    text-decoration: none;
-    color: white;
-    border-radius: 5px;
-    text-align: center;
-    height: 100%;
-}
-
-a.button:hover {
-    background: #333;
-}
-
-h1{
-    font-size: 32px;
-    font-weight: bold;
-}
-
-h2{
-    font-size:24px;
-    font-weight:bold;
-}
-
-h3{
-    font-size:18px;
-}
-
-p{
-    font-size:16px;
-}
-/*------------------------------------------------------------*/
-
-
-
-/* Hier moet uiteindelijk een max-width komen*/
-
-/* section {
-    max-width:
-} */
-
-
-
-/*Onderstaande regels zijn speciaal voor de cv list feature*/
 
 section#cv-list ul>li {
     list-style: none;
