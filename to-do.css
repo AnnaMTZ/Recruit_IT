@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* to do list CSS */
+section#to-do-list .to-do-wrapper {
+width: 80%;
+background: rgb(212, 212, 212);
+border-radius: 5px;
+padding: 25px;
+margin: auto;
+}
+
+section#to-do-list .to-do-inputfield {
+    display: flex;
+    width: 100%;
+    margin: 20px 0;
+}
+
+section#to-do-list .to-do-inputfield input {
+    width: 85%;
+    height: 45px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding-left: 15px;
+}
+
+section#to-do-list .to-do-inputfield button {
+width: 45px;
+height: 45px;
+border: none;
+outline: none;
+background: black;
+color: #fff;
+cursor: pointer;
+border-radius: 3px;
+margin-left: 5px;
+}
+
+section#to-do-list .to-do-list {
+padding: 0px;
+}
+
+section#to-do-list .to-do-list li {
+    list-style: none;
+    height: 45px;
+    line-height: 45px;
+    position: relative;
+    background: #fff;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    padding: 0 15px;
+}
+
+section#to-do-list .to-do-list li span {
+    position: absolute;
+    right: 0px;
+    color: #fff;
+    width: 45px;
+    text-align: center;
+    background: black;
+    border-radius: 3px;
+    cursor: pointer;
+
+}
+
+
+/* End to do list wrapper */
