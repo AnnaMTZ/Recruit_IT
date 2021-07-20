@@ -45,6 +45,10 @@ section#to-do-list .to-do-inputfield button {
     border-radius: 0 5px 5px 0;
 }
 
+section#to-do-list .to-do-inputfield button:hover{
+    background:#333;
+}
+
 section#to-do-list .to-do-list {
 padding: 0px;
 }
@@ -60,11 +64,12 @@ section#to-do-list .to-do-list li {
     margin-bottom: 10px;
     padding: 0 15px;
     list-style:none;
+    overflow:hidden;
 }
 
-section#to-do-list .to-do-list li span {
+section#to-do-list .to-do-list li button {
     position: absolute;
-    right: -45px;
+    right: -55px;
     color: #fff;
     width: 55px;
     text-align: center;
@@ -74,15 +79,18 @@ section#to-do-list .to-do-list li span {
     transition: all 0.3s ease;
 }
 
+section#to-do-list .to-do-list li button:hover{
+    background:#333;
+}
+
 @media (hover: none) and (pointer: coarse) {
-    section#to-do-list .to-do-list li span{
+    section#to-do-list .to-do-list li button{
         right:0px;
     }
 }
 
-section#to-do-list .to-do-list li:hover span {
+section#to-do-list .to-do-list li:hover button {
     right: 0px;
-
 }
 
 section#to-do-list .to-do-footer {
