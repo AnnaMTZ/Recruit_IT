@@ -19,7 +19,26 @@
         <h1>RecruitIT</h1>
     </header>
     <div class="content row">
-        <section id="to-do-list" style="background-color:rgb(99, 99, 99);"></section>
+        <section id="to-do-list">
+            <div class="to-do-wrapper">
+                <h2>Recruit IT To-do list</h2>
+                <div class="to-do-inputfield">
+                    <label for="add-new-to-do">Add new task:</label>
+                    <input type="text" name="add-new-to-do" placeholder="Meeting with John Doe">
+                    <button><i class="fas fa-plus"></i></button>
+                </div>
+                    <ul class="to-do-list">
+                        <li>To-do 1<span><i class="fas fa-trash"></i></span></li>
+                        <li>To-do 2<span><i class="fas fa-trash"></i></span></li>
+                        <li>To-do 3<span><i class="fas fa-trash"></i></span></li>
+                        <li>To-do 4<span><i class="fas fa-trash"></i></span></li>
+                    </ul>
+                    <div class="to-do-footer">
+                        <span>You have 4 pending tasks</span>
+                        <button>Clear all</button>
+                    </div>
+            </div>
+        </section>
         <section id="cv-list">
 
             <div class="search-area">

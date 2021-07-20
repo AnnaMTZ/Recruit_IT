@@ -58,16 +58,9 @@ section#cv-list div.search-area div.searchbar form input[type="search"]::placeho
 }
 
 section#cv-list div.search-area div.searchbar button[type="submit"] {
-    background: black;
-    border: none;
-    color: white;
-    padding: 18px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
     border-radius: 0 5px 5px 0;
-    font-size: 16px;
     flex-basis: 55px;
+    padding:18px;
 }
 
 section#cv-list div.search-area div.searchbar button[type="submit"]:hover {

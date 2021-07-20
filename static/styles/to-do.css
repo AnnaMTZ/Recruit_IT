@@ -1,0 +1,100 @@
+section#to-do-list{
+    padding-top:20px;
+}
+
+section#to-do-list .to-do-wrapper {
+    border-radius: 5px;
+    padding: 0 20px;
+    margin: auto;
+}
+section#to-do-list .to-do-wrapper h2{
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+
+section#to-do-list .to-do-inputfield {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+    height:55px;
+    margin-bottom: 50px;
+}
+
+section#to-do-list .to-do-inputfield label{
+    margin-bottom: 10px;
+}
+
+section#to-do-list .to-do-inputfield input {
+    flex-basis: calc(100% - 55px);
+    height: 100%;
+    border-radius: 5px 0 0 5px;
+}
+
+section#to-do-list .to-do-inputfield button {
+    flex-basis: 55px;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: black;
+    color: #fff;
+    cursor: pointer;
+    padding: 18px 20px;
+    border-radius: 0 5px 5px 0;
+}
+
+section#to-do-list .to-do-list {
+padding: 0px;
+}
+
+section#to-do-list .to-do-list li {
+    list-style: none;
+    height: 55px;
+    line-height: 55px;
+    position: relative;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #ababab;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    list-style:none;
+}
+
+section#to-do-list .to-do-list li span {
+    position: absolute;
+    right: -45px;
+    color: #fff;
+    width: 55px;
+    text-align: center;
+    background: black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    section#to-do-list .to-do-list li span{
+        right:0px;
+    }
+}
+
+section#to-do-list .to-do-list li:hover span {
+    right: 0px;
+
+}
+
+section#to-do-list .to-do-footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:20px;
+}
+
+section#to-do-list .to-do-footer span{
+    flex-basis:50%;
+}
+
+/* End to do list wrapper */
