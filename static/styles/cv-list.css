@@ -1,0 +1,158 @@
+/* DEZE CSS REGELS KUNNEN MOGELIJK VERWIJDERD WORDEN BIJ HET SAMENVOEGEN */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Ubuntu", sans-serif;
+}
+
+a.button {
+    background: black;
+    padding: 20px 22px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    height: 100%;
+}
+
+a.button:hover {
+    background: #333;
+}
+
+h1{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h2{
+    font-size:24px;
+    font-weight:bold;
+}
+
+h3{
+    font-size:18px;
+}
+
+p{
+    font-size:16px;
+}
+/*------------------------------------------------------------*/
+
+
+
+/* Hier moet uiteindelijk een max-width komen*/
+
+/* section {
+    max-width:
+} */
+
+
+
+/*Onderstaande regels zijn speciaal voor de cv list feature*/
+
+section#cv-list ul>li {
+    list-style: none;
+}
+
+section#cv-list div.search-area {
+    margin-bottom: 20px;
+    padding:0 20px;
+}
+
+section#cv-list div.search-area-header {
+    display: flex;
+    margin-bottom:20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section#cv-list div.search-area-header h2 {
+    flex-basis:calc(100% - 140px);
+}
+
+section#cv-list div.search-area div.searchbar form{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+section#cv-list div.search-area div.searchbar form label{
+    flex-basis:100%;
+    margin-bottom:10px;
+}
+
+section#cv-list div.search-area div.searchbar form input[type="search"] {
+    height: 55px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    width:80%;
+    padding: 0 10px;
+    flex-basis:calc(100% - 55px);
+    border: 1px #ababab solid;
+    font-family: "Ubuntu", sans-serif;
+    font-size:16px;
+}
+
+section#cv-list div.search-area div.searchbar form input[type="search"]::placeholder {
+    color: #ababab;
+    font-style: italic;
+    font-size:14px;
+}
+
+section#cv-list div.search-area div.searchbar button[type="submit"] {
+    background: black;
+    border: none;
+    color: white;
+    padding: 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0 5px 5px 0;
+    font-size: 16px;
+    flex-basis: 55px;
+}
+
+section#cv-list div.search-area div.searchbar button[type="submit"]:hover {
+    background:#333;
+}
+
+
+section#cv-list div.results {
+    padding: 0 20px;
+}
+
+section#cv-list div.results ul li {
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    margin-bottom:10px;
+    border: 1px #ababab solid;
+}
+
+section#cv-list div.results ul li div.candidate-picture  {
+    border-radius: 2000px;
+    flex-basis:50px;
+    max-width:150px;
+    margin:auto;
+    margin-bottom:20px;
+}
+
+section#cv-list div.results ul li div.candidate-picture img{
+    border-radius:2000px;
+    width:100%;
+    height:100%;
+}
+
+section#cv-list div.results ul li div.candidate-information {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+section#cv-list div.results ul li div.candidate-information a.button {
+    margin-top:10px;
+}
