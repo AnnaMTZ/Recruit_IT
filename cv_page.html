@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="SitePoint">
+    <meta name="description" content="Recruitment company in IT">
+    <link rel="stylesheet" href="cv_page.css">
+    <title>CV page</title>
+    <!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+
+</head>
+<body>
+   <header>
+       <nav>
+           <ul class="nav_link">
+           <div class="logo">RecruitIT</div>
+           <!-- <li class="logo">Recruit IT logo</li> -->
+           <li>Introduction</li>
+           <li>Work experience</li>
+           <li>Competences</li>
+           <li>Personal Data</li>
+           <li><button class="button" id="backbutton">Back</button></li>
+       </ul>
+    </nav>
+   </header>
+
+   <main class="main">
+
+
+<section class="photo_name">
+    <div class="photo">Photo</div>
+    <div class="name_role_profession">
+        <h2>Candidate Name</h2>
+        <p>Candidate role/profession</p>
+</div>
+    
+</section>
+
+       <section class="intro">
+        <form action="" class="introduction" id="introduction">
+            <label for="introduction" ><h2>Introduction</h2></label>
+
+            <textarea id="introduction" name="introduction" rows="4" cols="110">
+             
+                </textarea>
+
+
+            <!-- <input type="text"id="introduction"> -->
+            <!-- do we need an "add" button here? -->
+        </form>
+  </section>
+
+  <section class="experience">
+      <h2>Work experience</h2>
+
+    <div class="experience_part1">
+
+   <div>
+        <label for="company_name">Company name</label>
+      <input type="text" id="company_name">
+</div>
+
+<div>
+      <label for="role">Role</label>
+      <input type="text" id="role">
+</div>
+
+
+  <div class="from_till">
+      <div>
+      <label for="from">from</label>
+      <input type="text" id="from">
+      </div>
+      <div>
+      <label for="till">till</label>
+      <input type="text" id="experience1">
+      </div>
+      </div>
+</div>
+
+
+      <div class="experience_part2">
+      <label for="obligations">Obligations</label>
+
+      <textarea id="obligations" name="obligations" rows="4" cols="110">
+             
+    </textarea>
+
+  </div>
+
+
+      <button class="btn" id="add_experience_btn">Add work experience</button>
+  </form>
+  </section>
+
+  <section class="competences">
+      <h2>Competences</h2>
+
+<!-- ul li -->
+
+      <div class="competences_wrapper">
+      <div class="competence">
+          <h3>Competence X</h3>
+          <div class="competence_block"></div>
+      </div><div class="competence">
+        <h3>Competence X</h3>
+        <div class="competence_block"></div>
+    </div>
+
+      
+
+  
+ 
+      <button class="btn" id="add_competence_btn">+ Add competence</button>
+  </section>
+
+  <section class="personal_data">
+      <h2>Personal data</h2>
+<form action="">
+    <!-- /// Datalist, layout with grid -->
+    <div class="personal_data_field">
+    <label for="located">Located</label>
+    <input type="text"id="Located" value=" ">
+</div>
+
+<div class="personal_data_field">
+    <label for="nationality-list">Nationality:</label>
+    <input list="nationality-list" type="text" id="nationality" name="nationality">
+
+    <datalist id="nationality-list">
+        <option value="Ukrainian">
+        <option value="Dutch">
+        <option value="British">
+    </datalist>
+
+</div>
+
+<div class="personal_data_field">
+    <label for="private_number">Private number</label>
+    <input type="text"id="private_number" value=" ">
+</div>
+
+<div class="personal_data_field">
+    <label for="work_number">Work number</label>
+    <input type="text"id="work_number" value=" ">
+</div>
+
+<div class="personal_data_field">
+    <label for="email">E-mail</label>
+    <input type="text"id="email" value=" ">
+</div>
+
+<div class="personal_data_field">
+    <label for="date_of_birth">Date of birth</label>
+    <input type="text"id="date_of_birth" value=" ">
+</div>
+
+<div class="personal_data_field">
+    <label for="gender_list">Gender</label>
+    <input type="text" list="gender_list" id="gender" name="gender">
+    </div>
+</form> 
+
+    
+  <datalist id="gender_list">
+        <option value="Male">
+        <option value="Female">
+        <option value="Other">
+    </datalist> 
+  </section>
+
+<button class="btn btn_general" id="btn_general">+ Add Person</button>
+
+
+ <!-- To add willingness to work abroad -->
+
+
+   </main>
+   <footer class="footer"></footer>
+</body>
+</html>
