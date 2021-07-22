@@ -101,8 +101,13 @@ section#to-do-list .to-do-footer {
     margin-top:20px;
 }
 
+section#to-do-list .to-do-footer button{
+    background: #df7d51;
+}
+
 section#to-do-list .to-do-footer span{
     flex-basis:50%;
+    
 }
 
 /* End to do list wrapper */

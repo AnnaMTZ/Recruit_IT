@@ -118,23 +118,26 @@ section#cv-list div.cv-status{
     border-radius:5px;
     width:calc(100% - 40px);
     margin:auto;
-    border: 1px solid #333;
     margin-bottom:10px;
     display:flex;
     align-items: center;;
+    background:#618b98;
 }
 
 section#cv-list div.cv-status i{
     flex-basis:45px;
     font-size: 25px;
+    color:white;
 }
 
 section#cv-list div.cv-status p{
     flex-basis:calc(100% - 45px);
+    color:white;
 }
 
 section#cv-list div.cv-status p a.highlight{
     text-decoration: underline;
+    color:white;
 }
 
 
@@ -174,4 +177,5 @@ section#cv-list div.results ul li div.candidate-information {
 
 section#cv-list div.results ul li div.candidate-information a.button {
     margin-top:10px;
+    background: #df7d51;
 }
