@@ -18,28 +18,37 @@ section#cv-list div.search-area {
     padding:0 20px;
 }
 
-section#cv-list div.search-area-header {
+section#cv-list div.cv-list-header {
     display: flex;
     margin-bottom:20px;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
-section#cv-list div.search-area-header h2 {
+section#cv-list div.cv-list-header h2 {
     flex-basis:calc(100% - 140px);
 }
 
 section#cv-list div.search-area div.searchbar form{
-    display:flex;
-    flex-wrap:wrap;
+    
 }
 
-section#cv-list div.search-area div.searchbar form label{
+section#cv-list div.search-area div.searchbar form fieldset{
+    border:none;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.skills{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.skills label{
     flex-basis:100%;
     margin-bottom:10px;
 }
 
-section#cv-list div.search-area div.searchbar form input[type="search"] {
+section#cv-list div.search-area div.searchbar form fieldset.skills input[type="search"] {
     height: 55px;
     border-radius: 5px 0 0 5px;
     border: none;
@@ -51,20 +60,84 @@ section#cv-list div.search-area div.searchbar form input[type="search"] {
     font-size:16px;
 }
 
-section#cv-list div.search-area div.searchbar form input[type="search"]::placeholder {
+section#cv-list div.search-area div.searchbar form fieldset.skills input[type="search"]::placeholder {
     color: #ababab;
     font-style: italic;
     font-size:14px;
 }
 
-section#cv-list div.search-area div.searchbar button[type="submit"] {
+section#cv-list div.search-area div.searchbar form fieldset.skills button[type="submit"] {
     border-radius: 0 5px 5px 0;
     flex-basis: 55px;
     padding:18px;
 }
 
-section#cv-list div.search-area div.searchbar button[type="submit"]:hover {
+section#cv-list div.search-area div.searchbar form fieldset.skills button[type="submit"]:hover {
     background:#333;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.work-abroad{
+    display:flex;
+    flex-wrap: wrap;
+    margin-top:10px;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.work-abroad>div{
+    display:flex;
+    align-items: center;
+    flex-basis:100%;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.work-abroad>div:not(:last-of-type){
+    margin-bottom:10px;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.work-abroad>div input[type="checkbox"]{
+    margin-right:7px;
+}
+
+@media only screen and (min-width: 550px) {
+    section#cv-list div.search-area div.searchbar form fieldset.work-abroad{
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    section#cv-list div.search-area div.searchbar form fieldset.work-abroad>div{
+        flex-basis:auto;
+        margin-right: 20px;
+    }
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.work-abroad legend{
+    flex-basis:100%;
+    margin-bottom:10px;
+}
+
+section#cv-list div.cv-status{
+    padding: 30px 20px;
+    background: #ababab;
+    border-radius:5px;
+    width:calc(100% - 40px);
+    margin:auto;
+    margin-bottom:10px;
+    display:flex;
+    align-items: center;;
+    background:#618b98;
+}
+
+section#cv-list div.cv-status i{
+    flex-basis:45px;
+    font-size: 25px;
+    color:white;
+}
+
+section#cv-list div.cv-status p{
+    flex-basis:calc(100% - 45px);
+    color:white;
+}
+
+section#cv-list div.cv-status p a.highlight{
+    text-decoration: underline;
+    color:white;
 }
 
 
@@ -104,4 +177,5 @@ section#cv-list div.results ul li div.candidate-information {
 
 section#cv-list div.results ul li div.candidate-information a.button {
     margin-top:10px;
+    background: #df7d51;
 }

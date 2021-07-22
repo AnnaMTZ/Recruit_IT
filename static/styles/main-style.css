@@ -50,11 +50,15 @@ p{
     font-size:16px;
 }
 
+body{
+    background: #d8d0c5;
+}
+
 header {
     padding: 20px 10px;
     text-align: center;
-    background: #000;
     color: white;
+    background:#618b98;
 }
 
 div.content{
@@ -85,6 +89,11 @@ input[type="text"]::placeholder{
     font-style: italic;
     font-size:14px;
 }
+
+input[type="checkbox"]{
+    height:25px;
+    width:25px;
+} 
 
 @media only screen and (min-width: 800px) {
     div.content{
