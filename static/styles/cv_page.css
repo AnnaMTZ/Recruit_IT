@@ -13,176 +13,142 @@
 body {
   font-family: "Ubuntu", sans-serif;
   background-color: #d8d0c5;
+  overflow-x:hidden;
 }
-
-/*  Header */
-
-.logo {
-  position: absolute;
-  left: 2vw;
-  font-size: 40px;
-  /* position: fixed; */
-  /* background-color: darkblue; */
-  height: 8vh;
-  text-align: center;
-  /* justify-self: start; - wtf it does not does not work ? */
-  color: #000;
-}
-
-
-
 
 a {
     color: #fff;
 }
 
 ul {
-  background-color: #618b98;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: repeat(6, auto);
-  justify-content: end;
-  height: 8vh;
-  align-items: center;
-  list-style: none;
-  color: #fff;
+    background-color: #618b98;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(6, auto);
+    justify-content: end;
+    height: 8vh;
+    align-items: center;
+    list-style: none;
+    color: #fff;
 }
 
 ul li {
-  padding-right: 2vw;
-}
-
-#backbutton {
-  width: 10vw;
-  height: 4vh;
-  transition: all 0.5s ease-in-out;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  font-weight: bold;
-}
-
-#backbutton:hover {
-  background-color: #618b98;
-  color: #fff;
-  cursor: pointer;
+    padding-right: 2vw;
 }
 
 /* Main + general styling*/
 
 .main {
-  width: 90vw;
-  margin: 0 auto;
-  margin-bottom: 5vh;
+    width: 90vw;
+    margin: 0 auto;
+    margin-bottom: 5vh;
 }
 
 .main h1 {
-  font-size: 32px;
-  line-height: 1.2;
+    font-size: 32px;
+    line-height: 1.2;
 }
 
 .main h2 {
-  font-size: 24px;
-  line-height: 1.2;
+    font-size: 24px;
+    line-height: 1.2;
 }
 
 .main h3 {
-  font-size: 18px;
-  line-height: 1.2;
+    font-size: 18px;
+    line-height: 1.2;
 }
 
 .main p {
-  font-size: 16px;
-  line-height: 1.4;
+    font-size: 16px;
+    line-height: 1.4;
 }
 
 .main .btn {
-  font-size: 16px;
-  line-height: 1.4;
-  font-size: 16px;
-  line-height: 1.4;
-  background-color: #df7d51;
-  color: #fff;
-  outline: none;
-  border: none;
-  transition: background-color 0.5s ease-in-out;
-  height: 6vh;
-  margin-top: 2vh;
-  width: auto;
-  border-radius: 5px;
-  justify-content: flex-end;
-  padding: 5px 10px;
+    font-size: 16px;
+    line-height: 1.4;
+    font-size: 16px;
+    line-height: 1.4;
+    background-color: #df7d51;
+    color: #fff;
+    outline: none;
+    border: none;
+    transition: background-color 0.5s ease-in-out;
+    height: 6vh;
+    margin-top: 2vh;
+    width: auto;
+    border-radius: 5px;
+    justify-content: flex-end;
+    padding: 5px 10px;
 }
 
 .main button:hover {
-  background-color: #282b2c;
-  cursor: pointer;
+    background-color: #282b2c;
+    cursor: pointer;
 }
 
 .main button:active {
-  transform: scale(0.98);
-  cursor: pointer;
+    transform: scale(0.98);
+    cursor: pointer;
 }
 
 .main > section {
-  border-radius: 10px;
- 
-  margin-top: 5vh;
-  width: 90%;
-  margin: 0 auto;
-  height: 100%;
-  padding: 3vh 0;
+    border-radius: 10px;
+    margin-top: 5vh;
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+    padding: 3vh 0;
 }
 
 .main textarea {
     width: 100%;
-  border-radius: 3px;
-  outline: none;
-  border: none;
+    border-radius: 3px;
+    outline: none;
+    border: none;
 }
 
 .main input {
-    /* width: 100%; */
-  border-radius: 3px;
-  outline: none;
-  border: none;
+    border-radius: 3px;
+    outline: none;
+    border: none;
 }
 
 /* Candidate name/role/profession section */
 
 .main .photo_name {
-  display: flex;
-  height: 20vh;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 7vh;
+    display: flex;
+    height: 20vh;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 7vh;
 }
 
 .main .photo_name .photo img {
-  background-color: #fff;
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 4vw 0 3vw;
+    background-color: #fff;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 4vw 0 3vw;
 }
 
 .main .photo_name .photo .name_role_profession > * {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    line-height: 1.4;
 }
 
 /* introduction section */
 
 .main .intro {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3vh;
 }
 
 .btn_general {
@@ -196,12 +162,12 @@ ul li {
 
 
 .main .intro form input {
-  height: 20vh;
-  border-radius: 10px;
-  width: 100%;
-  outline: none;
-  border: none;
-  margin-top: 2vh;
+    height: 20vh;
+    border-radius: 10px;
+    width: 100%;
+    outline: none;
+    border: none;
+    margin-top: 2vh;
 }
 
 /* work abroad */
@@ -219,166 +185,160 @@ ul li {
 /* work experience section */
 
 .main .experience {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 
 .main .experience .btn {
-width: 25vw;
-align-self: end;
-  }
+    width: 25vw;
+    align-self: end;
+}
 
 
 .main .experience h2 {
-  margin-bottom: 3vh;
+    margin-bottom: 3vh;
 }
 
 .main .experience form {
-  width: 90%;
-  margin: 0 auto;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .main .experience form input {
-  margin-top: 3vh;
+    margin-top: 3vh;
 }
 
 .main .experience .experience_part1 {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 3vh;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3vh;
 }
 
 .main .experience .experience_part1 #company_name,
 #role {
-  width: 30vw;
-  height: 5vh;
+    width: 30vw;
+    height: 5vh;
 }
 
 .main .experience .experience_part1 > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .main .experience .experience_part1 .from_till {
-  display: flex;
-  align-items: flex-end;
+    display: flex;
+    align-items: flex-end;
 }
 
 .main .experience .experience_part1 .from_till input {
-  width: 10vw;
+    width: 10vw;
 }
 
 .main .experience .experience_part2 {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .main .experience .experience_part2 input {
-  height: 20vh;
+    height: 20vh;
 }
 
 /* Competences section */
 
 .main .competences {
-  margin-bottom: 5vh;
-  height: 100%;
-  width: 100%;
+    margin-bottom: 5vh;
+    height: 100%;
+    width: 100%;
 }
 
 .main .competences .competences_wrapper {
     width: 100%;
-  display: flex;
- justify-content: space-around;
- margin-top: 2vh;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2vh;
 }
 
 .main .competences .competences_wrapper .selected_competences {
     display: flex;
- flex-direction: column;
- align-items: left;
- justify-content: left;
- width: 60vw;
- height: inherit;
- padding: 2vh 0;
- width: inherit;
-  }
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    width: 60vw;
+    height: inherit;
+    padding: 2vh 0;
+    width: inherit;
+}
 
-  .main .competences .competences_wrapper .selected_competences{
-  /* align-self: flex-end;
-  justify-self: flex-end; */
-  color: #000;
-  background-color: #fff;
-  border-radius: 5px;
-  width: 30vw;
-
-  }
+.main .competences .competences_wrapper .selected_competences{
+    color: #000;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 30vw;
+}
 
 .main .competences h2 {
-  margin-bottom: 3vh;
+    margin-bottom: 3vh;
 }
 
 .main .competences .competence {
-  padding-right: 2vw;
+    padding-right: 2vw;
 }
 
 .main .competences .competence form {
-   display: flex;
-   flex-direction: column;
-  }
+    display: flex;
+    flex-direction: column;
+}
   
-  .main .competences .competence form input {
-  height: 5vh;
-  margin-top: 1vh;
-   }
-   
-
-
+.main .competences .competence form input {
+    height: 5vh;
+    margin-top: 1vh;
+}
 .main .competences .competence .competence_block {
-  height: 5vh;
-  background-color: white;
-  width: 30vw;
-  border-radius: 5px;
+    height: 5vh;
+    background-color: white;
+    width: 30vw;
+    border-radius: 5px;
 }
 
 .main .competences button:hover {
-  background-color: #282b2c;
-  cursor: pointer;
+    background-color: #282b2c;
+    cursor: pointer;
 }
 
 .main .competences button:active {
-  transform: scale(0.98);
-  cursor: pointer;
+    transform: scale(0.98);
+    cursor: pointer;
 }
 
 /* Personal data */
 
 .main .personal_data {
-  padding: 2vh 2vw;
+    padding: 2vh 2vw;
 }
 
 .main .personal_data h2 {
-  margin-bottom: 2vh;
+    margin-bottom: 2vh;
 }
 
 .main .personal_data form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  max-height: 17vh;
-  flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 17vh;
+    flex-wrap: wrap;
 }
 
 .main .personal_data form > div {
-  margin-bottom: 1 vh;
+    margin-bottom: 1vh;
 }
 
 .main .personal_data form .personal_data_field {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1vh;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1vh;
 }
 
 .main .personal_data form .personal_data_field label {
@@ -387,7 +347,8 @@ align-self: end;
 
 /* Media queries */
 
-@media only screen and (max-width: 800px) {
+
+/* @media only screen and (max-width: 800px) {
     header .nav_link > li {
         display: none;
     }
@@ -450,6 +411,6 @@ align-self: end;
     padding: 0px;
 }
 
-}
+} */
 
 

@@ -1,213 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="SitePoint">
     <meta name="description" content="Recruitment company in IT">
-    <link rel="stylesheet" href="static/styles/cv_page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link href="static/styles/fontawesome.min.css" rel="stylesheet">
+    <link href="static/styles/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles/main-style.css">
+    <link rel="stylesheet" href="static/styles/cv-page.css">
     <title>CV page</title>
-    <!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
-
-    <!-- <a id="facebook_ads_example"> -->
-
 </head>
+
 <body>
-   <header>
-       <nav>
-           <ul class="nav_link">
-           <div class="logo">RecruitIT</div>
-           <!-- <li class="logo">Recruit IT logo</li> -->
-           
-               
+    <header>
+        <h1>RecruitIT</h1>
+        <a class="button" href="index.html"><i class="fas fa-chevron-left"></i></a>
+        <button class="btn btn_general" id="btn_general"><i class="fas fa-download"></i></button>
+    </header>
+
+    <nav>
+        <ul class="nav_link">
             <li><a href="#intro">Introduction</a></li>
             <li><a href="#experience">Work experience</a></li>
             <li><a href="#competences">Competences</a></li>
             <li><a href="#personal_data">Personal data</a></li>
             <li><i class="far fa-bars"></i></li>
-
-           <li><button class="button" id="backbutton">Back</button></li>
-       </ul>
+        </ul>
     </nav>
-   </header>
 
-   <main class="main">
-
-
-<section class="photo_name">
-    <div class="photo">
-        <img src="static/img/placeholder-image.png" alt="profile picture">
-    </div>
-    <div class="name_role_profession">
-        <h2>Candidate Name</h2>
-        <p>Candidate role/profession</p>
-</div>
-    
-</section>
-
-       <section class="intro" id="intro">
-        <form action="" class="introduction" id="introduction">
-            <label for="introduction" ><h2>Introduction</h2></label>
-
-            <textarea id="introduction" name="introduction" rows="4" cols="110">
-             
-                </textarea>
-
-
-            <!-- <input type="text"id="introduction"> -->
-            <!-- do we need an "add" button here? -->
-        </form>
-  </section>
-
-  <section class="work-abroad">
-    <legend><h3>Willingness to work abroad:</h3></legend>
-    <div class="work-benelux">
-        <input type="checkbox" name="work-benelux" id="work-benelux"><label for="work-benelux">Benelux</label>
-    </div>
-    <div class="work-europe">
-        <input type="checkbox" name="work-europe" id="work-europe">
-        <label for="work-europe">Europe</label>
-    </div>
-
-    <div class="work-global">
-        <input type="checkbox" name="work-global" id="work-global"><label for="work-global">Global</label>
-    </div>
-  </section>
-
-  <section class="experience" id="experience">
-      <h2>Work experience</h2>
-
-    <div class="experience_part1">
-
-   <div>
-        <label for="company_name">Company name</label>
-      <input type="text" id="company_name">
-</div>
-
-<div>
-      <label for="role">Role</label>
-      <input type="text" id="role">
-</div>
-
-
-  <div class="from_till">
-      <div>
-      <label for="from">from</label>
-      <input type="text" id="from">
-      </div>
-      <div>
-      <label for="till">till</label>
-      <input type="text" id="experience1">
-      </div>
-      </div>
-</div>
-
-
-      <div class="experience_part2">
-      <label for="obligations">Obligations</label>
-
-      <textarea id="obligations" name="obligations" rows="4" cols="110">
-             
-    </textarea>
-
-  </div>
-
-
-      <button class="btn" id="add_experience_btn">Add experience</button>
-  </form>
-  </section>
-
-  <section class="competences" id="competences">
-    
-
-<!-- ul li -->
-
-      <div class="competences_wrapper">
-      <div class="competence">
-            <h2>Competences</h2>
+    <main>
         <form action="">
+            <fieldset id="name-and-photo">
+                <div class="candidate-photo">
+                    <img src="static/img/placeholder-image.png" alt="profile picture">
+                </div>
+                <div class="name-and-role">
+                    <input type="text" placeholder="Candidate name" class="candidate-name">
+                    <input type="text" placeholder="Candidate role / profession" class="candidate-role">
+                </div>
+            </fieldset>
 
-            <label for="competence">Competence</label>
-            <input type="text" id="competence">
-        </form>
-           <button class="btn" id="add_competence_btn">+ Add competence</button>
-    </div>
+            <fieldset id="introduction-text">
+                <legend for="candidate-introduction"><h2>Introduction</h2></legend>
+                <textarea id="candidate-introduction" name="candidate-introduction"></textarea>
+            </fieldset>
 
-    <ul class="selected_competences">
-        <li>HTML5</li>
-        <li>CSS3</li>
-<li>JavaScript</li>
+            <fieldset id="work-abroad">
+                <legend><h2>Willingness to work abroad:</h2></legend>
+                <div class="work-benelux">
+                    <input type="checkbox" name="work-benelux" id="work-benelux">
+                    <label for="work-benelux">Benelux</label>
+                </div>
 
-    <ul>
+                <div class="work-europe">
+                    <input type="checkbox" name="work-europe" id="work-europe">
+                    <label for="work-europe">Europe</label>
+                </div>
 
- </div>
-     
-  </section>
+                <div class="work-global">
+                    <input type="checkbox" name="work-global" id="work-global">
+                    <label for="work-global">Global</label>
+                </div>
+            </fieldset>
 
-  <section class="personal_data" id="personal_data">
-      <h2>Personal data</h2>
-<form action="">
-    <!-- /// Datalist, layout with grid -->
-    <div class="personal_data_field">
-    <label for="located">Located</label>
-    <input type="text"id="Located" value=" ">
-</div>
+            <fieldset id="work-experience">
+                <legend><h2>Work experience</h2></legend>
 
-<div class="personal_data_field">
-    <label for="nationality-list">Nationality:</label>
-    <input list="nationality-list" type="text" id="nationality" name="nationality">
+                <div class="work-experience-part">
+                    <label for="company-name">Company name:</label>
+                    <input type="text" id="company-name" placeholder="e.g. RecruitIT">
+                </div>
 
-    <datalist id="nationality-list">
-        <option value="Ukrainian">
-        <option value="Dutch">
-        <option value="British">
-    </datalist>
+                <div class="work-experience-part">
+                    <label for="work-experience-role">Role:</label>
+                    <input type="text" id="work-experience-role" placeholder="e.g. front end developer">
+                </div>
 
-</div>
+                <div class="work-experience-job-date">
+                    <div class="work-experience-part">
+                        <label for="job-date-start">Start date:</label>
+                        <input type="date" id="job-date-start">
+                    </div>
+                    <div class="work-experience-part">
+                        <label for="job-date-end">End date:</label>
+                        <input type="date" id="job-date-end">
+                    </div>
+                    <div class="work-experience-part present-day">
+                        <input type="checkbox" name="until-present-day" id="until-present-day">
+                        <label for="until-present-day">Still in service</label>
+                    </div>
+                </div>
 
-<div class="personal_data_field">
-    <label for="private_number">Private number</label>
-    <input type="text"id="private_number" value=" ">
-</div>
+                <div class="work-experience-part">
+                    <label for="obligations">Responsibilities:</label>
+                    <textarea id="obligations" name="obligations"></textarea>
+                </div>
 
-<div class="personal_data_field">
-    <label for="work_number">Work number</label>
-    <input type="text"id="work_number" value=" ">
-</div>
+                <button class="btn" id="add_experience_btn">Add experience</button>
+            </fieldset>
 
-<div class="personal_data_field">
-    <label for="email">E-mail</label>
-    <input type="text"id="email" value=" ">
-</div>
+            <fieldset id="competences">
+                <legend><h2>Competences</h2></legend>
+                <div class="add-competence">
+                    <label for="competence">Add competence:</label>
+                    <input type="text" id="competence" placeholder="HTML, CSS, JavaScript, etc.">
+                    <button class="btn" id="add_competence_btn">Add to list <i class="fas fa-arrow-down"></i> </button>
+                </div>
+                <div class="competences-list">
+                    <label>Competences list:</label>
+                    <ul>
+                        <li>HTML5<i class="fas fa-times"></i></li>
+                        <li>CSS3<i class="fas fa-times"></i></li>
+                        <li>JavaScript<i class="fas fa-times"></i></li>
+                    <ul>
+                </div>
+            </fieldset>
 
-<div class="personal_data_field">
-    <label for="date_of_birth">Date of birth</label>
-    <input type="text"id="date_of_birth" value=" ">
-</div>
+            <fieldset id="personal-data">
+                <legend><h2>Personal data</h2></legend>
+                <div class="personal-data-field">
+                    <label for="located">Located:</label>
+                    <input type="text" id="located" name="located" placeholder="e.g. Amsterdam, New York, Paris">
+                </div>
 
-<div class="personal_data_field">
-    <label for="gender_list">Gender</label>
-    <input type="text" list="gender_list" id="gender" name="gender">
-    </div>
-</form> 
+                <div class="personal-data-field">
+                    <label for="nationality-list">Nationality:</label>
+                    <input list="nationality-list" type="text" id="nationality" name="nationality" placeholder="e.g. Dutch, American, French">
 
-    
-  <datalist id="gender_list">
-        <option value="Male">
-        <option value="Female">
-        <option value="Other">
-    </datalist> 
-  </section>
+                    <datalist id="nationality-list">
+                        <option value="British"></option>
+                        <option value="Dutch"></option>
+                        <option value="French"></option>
+                        <option value="Ukrainian"></option>
+                    </datalist>
 
-<button class="btn btn_general" id="btn_general">+ Add Person</button>
-<br>
-<button class="btn btn_general" id="btn_general">Export data</button>
+                </div>
 
- <!-- To add willingness to work abroad -->
+                <div class="personal-data-field">
+                    <label for="mobile-number">Mobile number:</label>
+                    <input type="tel" id="mobile-number" placeholder="06-12345678">
+                </div>
 
+                <div class="personal-data-field">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="john-doe@recruitit.com">
+                </div>
 
-   </main>
-   <footer class="footer"></footer>
+                <div class="personal-data-field">
+                    <label for="date-of-birth">Date of birth:</label>
+                    <input type="date" id="date-of-birth">
+                </div>
+
+                <div class="personal-data-field">
+                    <label for="gender">Gender:</label>
+                    <input type="text" list="gender-list" id="gender" name="gender" placeholder="e.g. Male, Female, Non-binary">
+
+                    <datalist id="gender-list">
+                        <option value="Male">
+                        <option value="Female">
+                        <option value="Other">
+                    </datalist>
+                </div>
+            </fieldset>
+
+            <section id="save-candidate">
+                <button><i class="fas fa-save"></i>Save candidate</button>
+            </section>
+    </main>
 </body>
+
 </html>

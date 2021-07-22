@@ -17,7 +17,7 @@ a.button, button {
     text-decoration: none;
     color: white;
     border-radius: 5px;
-    text-align: center;
+    /* text-align: center; */
     height: 100%;
     border: none;
     font-size:16px;
@@ -55,11 +55,12 @@ body{
 }
 
 header {
-    padding: 20px 10px;
+    padding: 20px 20px;
     text-align: center;
     color: white;
     background:#618b98;
 }
+
 
 div.content{
     display:flex;
@@ -71,20 +72,28 @@ div.content section{
 }
 
 input[type="search"],
-input[type="text"] {
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+input[list] {
     height: 55px;
     border-radius: 5px;
     border: none;
     width:80%;
     padding: 0 10px;
-    flex-basis:calc(100% - 55px);
+    flex-basis:100%;
     border: 1px #ababab solid;
     font-family: "Ubuntu", sans-serif;
     font-size:16px;
+    background:white;
 }
 
 input[type="search"]::placeholder,
-input[type="text"]::placeholder{
+input[type="text"]::placeholder,
+input[type="date"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder{
     color: #ababab;
     font-style: italic;
     font-size:14px;
@@ -94,6 +103,26 @@ input[type="checkbox"]{
     height:25px;
     width:25px;
 } 
+
+textarea{
+    width:100%;
+    height:200px;
+    border-radius: 5px;
+    border:none;
+    font-family:"Ubuntu", sans-serif;
+    font-size:16px;
+    padding:10px 10px;
+}
+
+textarea::placeholder{
+    color:#ababab;
+    font-style: italic;
+    font-size:16px;
+}
+
+fieldset{
+    border:none;
+}
 
 @media only screen and (min-width: 800px) {
     div.content{
