@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  text-decoration: none;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
@@ -26,6 +27,13 @@ body {
   text-align: center;
   /* justify-self: start; - wtf it does not does not work ? */
   color: #000;
+}
+
+
+
+
+a {
+    color: #fff;
 }
 
 ul {
@@ -65,6 +73,7 @@ ul li {
 .main {
   width: 90vw;
   margin: 0 auto;
+  margin-bottom: 5vh;
 }
 
 .main h1 {
@@ -125,7 +134,14 @@ ul li {
   padding: 3vh 0;
 }
 
-.main textarea, input {
+.main textarea {
+    width: 100%;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+}
+
+.main input {
     /* width: 100%; */
   border-radius: 3px;
   outline: none;
@@ -142,10 +158,10 @@ ul li {
   margin-top: 7vh;
 }
 
-.main .photo_name .photo {
+.main .photo_name .photo img {
   background-color: #fff;
-  width: 90px;
-  height: 90px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -169,27 +185,15 @@ ul li {
   margin-top: 3vh;
 }
 
-.main .intro .introduction {
-  /* width: 100%; */
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+.btn_general {
+    margin-left: 2vw;
 }
 
 /* #introduction {
     margin-bottom: 5vh;
 } */
 
-.main .intro form {
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
+
 
 .main .intro form input {
   height: 20vh;
@@ -198,6 +202,18 @@ ul li {
   outline: none;
   border: none;
   margin-top: 2vh;
+}
+
+/* work abroad */
+
+.main .work-abroad {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.main .work-abroad > * {
+    margin-right: 2vh;
 }
 
 /* work experience section */
@@ -269,15 +285,38 @@ align-self: end;
 .main .competences {
   margin-bottom: 5vh;
   height: 100%;
+  width: 100%;
 }
 
 .main .competences .competences_wrapper {
+    width: 100%;
   display: flex;
-  flex-wrap: wrap;
+ justify-content: space-around;
+ margin-top: 2vh;
 }
 
+.main .competences .competences_wrapper .selected_competences {
+    display: flex;
+ flex-direction: column;
+ align-items: left;
+ justify-content: left;
+ width: 60vw;
+ height: inherit;
+ padding: 2vh 0;
+ width: inherit;
+  }
+
+  .main .competences .competences_wrapper .selected_competences{
+  /* align-self: flex-end;
+  justify-self: flex-end; */
+  color: #000;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 30vw;
+
+  }
+
 .main .competences h2 {
-  margin-bottom: 5vh;
   margin-bottom: 3vh;
 }
 
@@ -285,10 +324,22 @@ align-self: end;
   padding-right: 2vw;
 }
 
+.main .competences .competence form {
+   display: flex;
+   flex-direction: column;
+  }
+  
+  .main .competences .competence form input {
+  height: 5vh;
+  margin-top: 1vh;
+   }
+   
+
+
 .main .competences .competence .competence_block {
-  height: 10vh;
+  height: 5vh;
   background-color: white;
-  width: 100%;
+  width: 30vw;
   border-radius: 5px;
 }
 

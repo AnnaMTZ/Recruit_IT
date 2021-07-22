@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="SitePoint">
     <meta name="description" content="Recruitment company in IT">
-    <link rel="stylesheet" href="cv_page.css">
+    <link rel="stylesheet" href="static/styles/cv_page.css">
     <title>CV page</title>
     <!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+
+    <!-- <a id="facebook_ads_example"> -->
 
 </head>
 <body>
@@ -17,10 +19,14 @@
            <ul class="nav_link">
            <div class="logo">RecruitIT</div>
            <!-- <li class="logo">Recruit IT logo</li> -->
-           <li>Introduction</li>
-           <li>Work experience</li>
-           <li>Competences</li>
-           <li>Personal Data</li>
+           
+               
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#experience">Work experience</a></li>
+            <li><a href="#competences">Competences</a></li>
+            <li><a href="#personal_data">Personal data</a></li>
+            <li><i class="far fa-bars"></i></li>
+
            <li><button class="button" id="backbutton">Back</button></li>
        </ul>
     </nav>
@@ -30,7 +36,9 @@
 
 
 <section class="photo_name">
-    <div class="photo">Photo</div>
+    <div class="photo">
+        <img src="static/img/placeholder-image.png" alt="profile picture">
+    </div>
     <div class="name_role_profession">
         <h2>Candidate Name</h2>
         <p>Candidate role/profession</p>
@@ -38,7 +46,7 @@
     
 </section>
 
-       <section class="intro">
+       <section class="intro" id="intro">
         <form action="" class="introduction" id="introduction">
             <label for="introduction" ><h2>Introduction</h2></label>
 
@@ -52,7 +60,22 @@
         </form>
   </section>
 
-  <section class="experience">
+  <section class="work-abroad">
+    <legend><h3>Willingness to work abroad:</h3></legend>
+    <div class="work-benelux">
+        <input type="checkbox" name="work-benelux" id="work-benelux"><label for="work-benelux">Benelux</label>
+    </div>
+    <div class="work-europe">
+        <input type="checkbox" name="work-europe" id="work-europe">
+        <label for="work-europe">Europe</label>
+    </div>
+
+    <div class="work-global">
+        <input type="checkbox" name="work-global" id="work-global"><label for="work-global">Global</label>
+    </div>
+  </section>
+
+  <section class="experience" id="experience">
       <h2>Work experience</h2>
 
     <div class="experience_part1">
@@ -91,32 +114,38 @@
   </div>
 
 
-      <button class="btn" id="add_experience_btn">Add work experience</button>
+      <button class="btn" id="add_experience_btn">Add experience</button>
   </form>
   </section>
 
-  <section class="competences">
-      <h2>Competences</h2>
+  <section class="competences" id="competences">
+    
 
 <!-- ul li -->
 
       <div class="competences_wrapper">
       <div class="competence">
-          <h3>Competence X</h3>
-          <div class="competence_block"></div>
-      </div><div class="competence">
-        <h3>Competence X</h3>
-        <div class="competence_block"></div>
+            <h2>Competences</h2>
+        <form action="">
+
+            <label for="competence">Competence</label>
+            <input type="text" id="competence">
+        </form>
+           <button class="btn" id="add_competence_btn">+ Add competence</button>
     </div>
 
-      
+    <ul class="selected_competences">
+        <li>HTML5</li>
+        <li>CSS3</li>
+<li>JavaScript</li>
 
-  
- 
-      <button class="btn" id="add_competence_btn">+ Add competence</button>
+    <ul>
+
+ </div>
+     
   </section>
 
-  <section class="personal_data">
+  <section class="personal_data" id="personal_data">
       <h2>Personal data</h2>
 <form action="">
     <!-- /// Datalist, layout with grid -->
@@ -172,7 +201,8 @@
   </section>
 
 <button class="btn btn_general" id="btn_general">+ Add Person</button>
-
+<br>
+<button class="btn btn_general" id="btn_general">Export data</button>
 
  <!-- To add willingness to work abroad -->
 
