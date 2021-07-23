@@ -1,0 +1,181 @@
+section#cv-list {
+    padding-top:20px;
+    /* max-width: 600px; */
+    margin:auto;
+}
+
+section#cv-list ul{
+    height:80vh;
+    overflow:auto;
+}
+
+section#cv-list ul>li {
+    list-style: none;
+}
+
+section#cv-list div.search-area {
+    margin-bottom: 20px;
+    padding:0 20px;
+}
+
+section#cv-list div.cv-list-header {
+    display: flex;
+    margin-bottom:20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+section#cv-list div.cv-list-header h2 {
+    flex-basis:calc(100% - 140px);
+}
+
+section#cv-list div.search-area div.searchbar form{
+    
+}
+
+section#cv-list div.search-area div.searchbar form fieldset{
+    border:none;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.skills{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.skills label{
+    flex-basis:100%;
+    margin-bottom:10px;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.skills input[type="search"] {
+    height: 55px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    width:80%;
+    padding: 0 10px;
+    flex-basis:calc(100% - 55px);
+    border: 1px #ababab solid;
+    font-family: "Ubuntu", sans-serif;
+    font-size:16px;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.skills input[type="search"]::placeholder {
+    color: #ababab;
+    font-style: italic;
+    font-size:14px;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.skills button[type="submit"] {
+    border-radius: 0 5px 5px 0;
+    flex-basis: 55px;
+    padding:18px;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.skills button[type="submit"]:hover {
+    background:#333;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.work-abroad{
+    display:flex;
+    flex-wrap: wrap;
+    margin-top:10px;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.work-abroad>div{
+    display:flex;
+    align-items: center;
+    flex-basis:100%;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.work-abroad>div:not(:last-of-type){
+    margin-bottom:10px;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.work-abroad>div input[type="checkbox"]{
+    margin-right:7px;
+}
+
+@media only screen and (min-width: 550px) {
+    section#cv-list div.search-area div.searchbar form fieldset.work-abroad{
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    section#cv-list div.search-area div.searchbar form fieldset.work-abroad>div{
+        flex-basis:auto;
+        margin-right: 20px;
+    }
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.work-abroad legend{
+    flex-basis:100%;
+    margin-bottom:10px;
+}
+
+section#cv-list div.cv-status{
+    padding: 30px 20px;
+    background: #ababab;
+    border-radius:5px;
+    width:calc(100% - 40px);
+    margin:auto;
+    margin-bottom:10px;
+    display:flex;
+    align-items: center;;
+    background:#618b98;
+}
+
+section#cv-list div.cv-status i{
+    flex-basis:45px;
+    font-size: 25px;
+    color:white;
+}
+
+section#cv-list div.cv-status p{
+    flex-basis:calc(100% - 45px);
+    color:white;
+}
+
+section#cv-list div.cv-status p a.highlight{
+    text-decoration: underline;
+    color:white;
+}
+
+
+section#cv-list div.results {
+    padding: 0 20px;
+}
+
+section#cv-list div.results ul li {
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    margin-bottom:10px;
+    border: 1px #ababab solid;
+}
+
+section#cv-list div.results ul li div.candidate-picture  {
+    border-radius: 50%;
+    flex-basis:50px;
+    max-width:150px;
+    margin:auto;
+    margin-bottom:20px;
+    border:3px solid #ababab;
+}
+
+section#cv-list div.results ul li div.candidate-picture img{
+    border-radius:50%;
+    width:100%;
+    height:100%;
+}
+
+section#cv-list div.results ul li div.candidate-information {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+section#cv-list div.results ul li div.candidate-information a.button {
+    margin-top:10px;
+    background: #df7d51;
+}

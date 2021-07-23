@@ -1,0 +1,382 @@
+body {
+    font-family: "Ubuntu", sans-serif;
+    background-color: #d8d0c5;
+    overflow-x:hidden;
+}
+/*  Header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+header a.button{
+    order:-1;
+    padding: 18px 13px;
+    flex-basis:55px;
+}
+header a.button i{
+    margin-right:5px;
+}
+
+header h1{
+    text-align:left;
+}
+
+nav{
+    display:flex;
+    justify-content: center;
+    background: #063848;
+}
+
+nav ul{
+    display:flex;
+    width:200vw;
+    overflow-x:auto;
+    align-items: center;
+    white-space: nowrap;
+}
+
+nav ul li{
+    padding: 30px 0px;
+    list-style: none;
+}
+
+nav ul li:first-of-type{
+    margin-left:20px;
+}
+
+nav ul li:not(:last-of-type){
+    margin-right:10px;
+}
+
+nav ul li a{
+    padding: 10px 20px;
+    color:white;
+    text-decoration: none;
+    background:rgba(255,255,255,0.3);
+    border-radius:1000px;
+    border:2px solid white;
+}
+
+@media only screen and (min-width: 660px) {
+    nav ul{
+        overflow-x:hidden;
+        width:100%;
+        justify-content: center;
+    }
+}
+
+main{
+    padding: 20px 20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+main fieldset{
+    margin-top:20px;
+}
+/* --------------------------------------------------------------------- */
+
+                    /* NAME AND PHOTO SECTION */
+
+/* --------------------------------------------------------------------- */
+
+main form fieldset#name-and-photo{
+    display:flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    padding:20px 0;
+}
+
+@media only screen and (min-width: 800px) {
+    main form fieldset#name-and-photo{
+        flex-wrap: nowrap;
+    }
+}
+
+main form fieldset#name-and-photo div.candidate-photo{
+    flex-basis:100%;
+    margin:auto;
+    max-width:175px;
+    border-radius: 50%;
+}
+
+main form fieldset#name-and-photo div.candidate-photo img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    border: 5px solid #df7d51;
+    background:black;
+}
+
+main form fieldset#name-and-photo div.name-and-role{
+    text-align: center;
+    margin-top:10px;
+    flex-basis:100%;
+}
+
+
+main form fieldset#name-and-photo div.name-and-role input{
+    height:35px;
+    flex-basis:100%;
+    text-align: center;
+    background:transparent;
+    border:none;
+    border-radius:0;
+    color:black;
+    font-size: 24px;
+    border-bottom:4px solid rgb(171,171,171,0);
+    transition: border-bottom 0.4s ease;
+}
+main form fieldset#name-and-photo div.name-and-role input:hover{
+    border:none;
+    border-bottom:4px solid rgb(171,171,171,0);
+}
+
+main form fieldset#name-and-photo div.name-and-role input:focus{
+    border:none;
+    border-bottom:4px solid black;
+    outline:none;
+}
+
+main form fieldset#name-and-photo div.name-and-role input.candidate-name{
+    font-weight:bold;
+}
+
+main form fieldset#name-and-photo div.name-and-role input.candidate-name::placeholder{
+    font-weight:normal;
+    font-size: 24px;
+}
+
+main form fieldset#name-and-photo div.name-and-role input.candidate-role{
+    font-size:18px;
+}
+
+main form fieldset#name-and-photo div.name-and-role input:not(:first-of-type){
+    margin-top:10px;
+}
+
+@media only screen and (min-width: 800px) {
+    main form fieldset#name-and-photo{
+        flex-wrap: nowrap;
+    }
+    main form fieldset#name-and-photo div.candidate-photo {
+        flex-basis:220px;
+        max-width: 220px;
+    }
+    main form fieldset#name-and-photo div.candidate-photo img {
+        width:auto;
+        height:auto;
+        max-width:220px;
+        margin:0;
+    }
+
+    main form fieldset#name-and-photo div.name-and-role{
+        text-align: left;
+        flex-basis: calc(100% - 220px);
+        margin-left:20px;
+    }
+
+    main form fieldset#name-and-photo div.name-and-role input{
+        text-align: left;
+    }
+}
+
+/* --------------------------------------------------------------------- */
+
+                    /* INTRODUCTION TEXT SECTION */
+
+/* --------------------------------------------------------------------- */
+
+main form fieldset#introduction-text {
+    margin-top:30px;
+}
+
+main form fieldset#introduction-text legend h2{
+    margin-bottom:10px;
+}
+
+
+/* --------------------------------------------------------------------- */
+
+                        /* WORK ABROAD SECTION */
+
+/* --------------------------------------------------------------------- */
+
+main form fieldset#work-abroad{
+    display:flex;
+    flex-wrap: wrap;
+    margin-top:30px;
+}
+
+main form fieldset#work-abroad legend{
+    flex-basis:100%;
+    margin-bottom:10px;
+}
+
+main form fieldset#work-abroad>div{
+    display:flex;
+    align-items: center;
+    flex-basis:100%;
+}
+
+main form fieldset#work-abroad>div:not(:last-of-type){
+    margin-bottom:10px;
+}
+
+main form fieldset#work-abroad>div input[type="checkbox"]{
+    margin-right:7px;
+}
+
+@media only screen and (min-width: 500px) {
+    main form fieldset#work-abroad{
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    main form fieldset#work-abroad>div{
+        flex-basis:auto;
+        margin-right: 20px;
+    }
+}
+
+/* --------------------------------------------------------------------- */
+
+                    /* WORK EXPERIENCE SECTION */
+
+/* --------------------------------------------------------------------- */
+
+main form fieldset#work-experience div.work-experience-part{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+main form fieldset#work-experience div.work-experience-part{
+    margin-top:10px;
+}
+
+main form fieldset#work-experience>div.work-experience-part:last-of-type{
+    margin-bottom:10px;
+}
+
+main form fieldset#work-experience div.work-experience-part label{
+    flex-basis:100%;
+    line-height:2em;
+}
+
+main form fieldset#work-experience div.work-experience-part.present-day{
+    flex-wrap:nowrap;
+    align-items: center;
+    margin-top:5px;
+}
+
+main form fieldset#work-experience div.work-experience-part.present-day label{
+    margin-left:7px;
+}
+
+/* --------------------------------------------------------------------- */
+
+                        /* COMPETENCES SECTION */
+
+/* --------------------------------------------------------------------- */
+
+main form fieldset#competences{
+    display:flex;
+    flex-direction: column;
+}
+
+main form fieldset#competences div.add-competence{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+main form fieldset#competences div.add-competence label{
+    line-height: 2em;
+    flex-basis:100%;
+}
+
+main form fieldset#competences div.add-competence input[type="text"]{
+    margin-bottom:10px;
+    flex-basis:calc(100% - 130px);
+    border-radius:5px 0 0 5px;
+}
+
+main form fieldset#competences div.add-competence button{
+    flex-basis:130px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 5px;
+    border-radius: 0 5px 5px 0;
+}
+
+main form fieldset#competences div.add-competence button i{
+    margin-left:5px;
+}
+
+main form fieldset#competences div.competences-list{
+    margin-top:10px;
+}
+
+main form fieldset#competences div.competences-list label{
+    line-height: 2em;
+    display:none;
+}
+
+
+main form fieldset#competences div.competences-list ul{
+    list-style: none;
+}
+
+main form fieldset#competences div.competences-list ul li{
+    background: #618b98;
+    padding:10px 20px;
+    border-radius:100px;
+    display:inline-block;
+    color:white;
+    margin-right:5px;
+    margin-bottom:5px;
+}
+
+main form fieldset#competences div.competences-list ul li i{
+    margin-left:3px;
+    width:5px;
+    height:0;
+    font-size:14px;
+}
+main form fieldset#competences div.competences-list ul li:hover i{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------- */
+
+                        /* PERSONAL DATA SECTION */
+
+/* --------------------------------------------------------------------- */
+
+main form fieldset#personal-data div.personal-data-field{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+main form fieldset#personal-data div.personal-data-field label{
+    flex-basis:100%;
+    line-height: 2em;
+}
+
+
+/* --------------------------------------------------------------------- */
+
+                        /* SAVE CANDIDATE SECTION */
+
+/* --------------------------------------------------------------------- */
+
+section#save-candidate{
+    margin-top:20px;
+}
+
+section#save-candidate button i {
+    margin-right:5px;
+}
