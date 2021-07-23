@@ -1,8 +1,4 @@
-body {
-    font-family: "Ubuntu", sans-serif;
-    background-color: #d8d0c5;
-    overflow-x:hidden;
-}
+
 /*  Header */
 
 header {
@@ -55,9 +51,20 @@ nav ul li a{
     padding: 10px 20px;
     color:white;
     text-decoration: none;
-    background:rgba(255,255,255,0.3);
+    background-color:rgba(255,255,255,0.3);
     border-radius:1000px;
     border:2px solid white;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+
+}
+
+nav ul li a:hover {
+    padding: 10px 20px;
+    color:#282b2c;
+    text-decoration: none;
+    background-color: #d8d0c5;
+    border-radius:1000px;
+    border:2px solid #fff;
 }
 
 @media only screen and (min-width: 660px) {
@@ -127,8 +134,9 @@ main form fieldset#name-and-photo div.name-and-role input{
     border-radius:0;
     color:black;
     font-size: 24px;
-    border-bottom:4px solid rgb(171,171,171,0);
+    /* border-bottom:4px solid rgb(171,171,171,0); */
     transition: border-bottom 0.4s ease;
+    outline: none;
 }
 main form fieldset#name-and-photo div.name-and-role input:hover{
     border:none;
@@ -341,7 +349,7 @@ main form fieldset#competences div.competences-list ul li{
 
 main form fieldset#competences div.competences-list ul li i{
     margin-left:3px;
-    width:5px;
+    width: 5px;
     height:0;
     font-size:14px;
 }
@@ -377,6 +385,24 @@ section#save-candidate{
     margin-top:20px;
 }
 
-section#save-candidate button i {
+section#save-candidate button i, section#add-candidate button i {
     margin-right:5px;
+}
+
+/* --------------------------------------------------------------------- */
+
+                        /* ADD CANDIDATE SECTION */
+
+/* --------------------------------------------------------------------- */
+
+#add-candidate button {
+    margin-top: 2rem;
+    background-color: #618b98;
+    font-weight: bolder;
+}
+
+#add-candidate button:hover {
+    margin-top: 2rem;
+    background-color: #000;
+    font-weight: bolder;
 }
