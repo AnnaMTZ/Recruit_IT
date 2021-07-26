@@ -6,6 +6,7 @@ section#to-do-list .to-do-wrapper {
     border-radius: 5px;
     padding: 0 20px;
     margin: auto;
+
 }
 section#to-do-list .to-do-wrapper h2{
     height: 55px;
@@ -21,7 +22,9 @@ section#to-do-list .to-do-inputfield {
     margin: 20px 0;
     height:55px;
     margin-bottom: 50px;
+    
 }
+
 
 section#to-do-list .to-do-inputfield label{
     margin-bottom: 10px;
@@ -51,7 +54,10 @@ section#to-do-list .to-do-inputfield button:hover{
 
 section#to-do-list .to-do-list {
 padding: 0px;
+max-height: 320px;
+overflow-y: auto;
 }
+
 
 section#to-do-list .to-do-list li {
     list-style: none;
