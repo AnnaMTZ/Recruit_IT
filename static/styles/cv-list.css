@@ -123,6 +123,11 @@ section#cv-list div.cv-status{
     align-items: center;;
     background:#618b98;
 }
+@media only screen and (min-width: 800px) {
+    section#cv-list div.cv-status{
+        margin-top:3em;
+    }
+}
 
 section#cv-list div.cv-status i{
     flex-basis:45px;
