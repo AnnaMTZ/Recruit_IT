@@ -78,8 +78,6 @@ searchBar.addEventListener('input', (e) => {
                         candidate.lastName.toLowerCase().concat(" ", candidate.name.toLowerCase()).includes(i.toLowerCase()) ||
                         candidate.lastName.toLowerCase().concat(candidate.name.toLowerCase()).includes(i.toLowerCase())
             })
-            console.log(filteredCandidates);
-
             resultsArray = resultsArray.concat(filteredCandidates);
         });
     }
@@ -89,8 +87,6 @@ searchBar.addEventListener('input', (e) => {
             const filteredCandidates = candidateList.filter(candidate => {
                 return candidate.skills.includes(i.toLowerCase())
             })
-            console.log(filteredCandidates);
-
             resultsArray = resultsArray.concat(filteredCandidates);
         });
     }
