@@ -20,8 +20,14 @@
     <header>
         <h1>RecruitIT</h1>
     </header>
+    <nav>
+        <ul>
+            <li id="toDoSectionLink"><a>Work experience</a></li>
+            <li id="candidateSectionLink"><a>Competences</a></li>
+        </ul>
+    </nav>
     <div class="content row">
-        <section id="to-do-list">
+        <section class="hide" id="to-do-list">
             <div class="to-do-wrapper">
                 <h2>Recruit IT To-do list</h2>
                 <div class="to-do-inputfield">
@@ -29,21 +35,21 @@
                     <input type="text" name="add-new-to-do" placeholder="Meeting with John Doe">
                     <button><i class="fas fa-plus"></i></button>
                 </div>
-                    <ul class="to-do-list">
-                        <li>To-do 1<button><i class="fas fa-trash"></i></button></li>
-                        <li>To-do 2<button><i class="fas fa-trash"></i></button></li>
-                        <li>To-do 3<button><i class="fas fa-trash"></i></button></li>
-                        <li>To-do 4<button><i class="fas fa-trash"></i></button></li>
-                        <li>To-do 5<button><i class="fas fa-trash"></i></button></li>
-                        <li>To-do 2<button><i class="fas fa-trash"></i></button></li>
-                        <li>To-do 3<button><i class="fas fa-trash"></i></button></li>
-                        <li>To-do 4<button><i class="fas fa-trash"></i></button></li>
-                        <li>To-do 5<button><i class="fas fa-trash"></i></button></li>
-                    </ul>
-                    <div class="to-do-footer">
-                        <span>You have 4 pending tasks</span>
-                        <button>Clear all</button>
-                    </div>
+                <ul class="to-do-list">
+                    <li>To-do 1<button><i class="fas fa-trash"></i></button></li>
+                    <li>To-do 2<button><i class="fas fa-trash"></i></button></li>
+                    <li>To-do 3<button><i class="fas fa-trash"></i></button></li>
+                    <li>To-do 4<button><i class="fas fa-trash"></i></button></li>
+                    <li>To-do 5<button><i class="fas fa-trash"></i></button></li>
+                    <li>To-do 2<button><i class="fas fa-trash"></i></button></li>
+                    <li>To-do 3<button><i class="fas fa-trash"></i></button></li>
+                    <li>To-do 4<button><i class="fas fa-trash"></i></button></li>
+                    <li>To-do 5<button><i class="fas fa-trash"></i></button></li>
+                </ul>
+                <div class="to-do-footer">
+                    <span>You have 4 pending tasks</span>
+                    <button>Clear all</button>
+                </div>
             </div>
         </section>
         <section id="cv-list">
@@ -83,7 +89,7 @@
                     </form>
                 </div>
             </div>
-    
+
             <div class="results">
                 <ul>
                     <li>
@@ -96,7 +102,7 @@
                             <a href="#" class="button">View candidate <i class="fas fa-chevron-right"></i></a>
                         </div>
                     </li>
-    
+
                     <li>
                         <div class="candidate-picture">
                             <img src="static/img/placeholder-image.png" alt="profile picture">
@@ -107,7 +113,7 @@
                             <a href="#" class="button">View candidate <i class="fas fa-chevron-right"></i></a>
                         </div>
                     </li>
-    
+
                     <li>
                         <div class="candidate-picture">
                             <img src="static/img/placeholder-image.png" alt="profile picture">
@@ -118,7 +124,7 @@
                             <a href="#" class="button">View candidate <i class="fas fa-chevron-right"></i></a>
                         </div>
                     </li>
-    
+
                     <li>
                         <div class="candidate-picture">
                             <img src="static/img/placeholder-image.png" alt="profile picture">
@@ -134,6 +140,6 @@
         </section>
     </div>
 </body>
-<script></script>
+<script src="./static/scripts/sections.js"></script>
 
 </html>
