@@ -63,7 +63,7 @@ section#to-do-list .to-do-list li {
     position: relative;
     background: #fff;
     border-radius: 5px;
-    border: 1px solid #ababab;
+    border: 3px solid #ababab;
     margin-bottom: 10px;
     padding: 0 15px;
     list-style: none;
