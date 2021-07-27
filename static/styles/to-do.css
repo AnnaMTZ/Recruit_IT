@@ -73,7 +73,7 @@ section#to-do-list .to-do-list li {
     overflow:hidden;
 }
 
-section#to-do-list .to-do-list li button {
+section#to-do-list .to-do-list li span {
     position: absolute;
     right: -55px;
     color: #fff;
@@ -85,17 +85,17 @@ section#to-do-list .to-do-list li button {
     transition: all 0.3s ease;
 }
 
-section#to-do-list .to-do-list li button:hover{
+section#to-do-list .to-do-list li span:hover{
     background:#333;
 }
 
 @media (hover: none) and (pointer: coarse) {
-    section#to-do-list .to-do-list li button{
+    section#to-do-list .to-do-list li span{
         right:0px;
     }
 }
 
-section#to-do-list .to-do-list li:hover button {
+section#to-do-list .to-do-list li:hover span {
     right: 0px;
 }
 
