@@ -1,3 +1,4 @@
+const competencesList = ["HTML", "CSS", "JavaScript", "Nodejs", "GraphQL"];
 const candidateList = [
     {
         name: "Redmar",
@@ -63,9 +64,7 @@ searchBar.addEventListener('input', (e) => {
                 return  candidate.profession.toLowerCase().includes(i.toLowerCase()) ||
                         candidate.profession.toLowerCase().includes(i.toLowerCase())
             })
-            // console.log(filteredCandidates);
             resultsArray = resultsArray.concat(filteredCandidates);
-            // console.log(resultsArray);
         });
     }
 
@@ -83,17 +82,46 @@ searchBar.addEventListener('input', (e) => {
     }
 
     function checkSkills(str){
+        let competencesSearchTerms = [];
+        const competencesListLowerCase = competencesList.map(competence => competence.toLowerCase());
         str.forEach(i => {
-            const filteredCandidates = candidateList.filter(candidate => {
-                return candidate.skills.includes(i.toLowerCase())
+            competencesSearchTerms = str.filter(searchTerm => {
+                return competencesListLowerCase.includes(searchTerm.toLowerCase())
             })
-            resultsArray = resultsArray.concat(filteredCandidates);
         });
+
+        competencesSearchTerms = competencesSearchTerms.map(competence => competence.toLowerCase());
+
+        competencesListLowerCase.forEach((element, index) => {
+            if(element.toLowerCase().includes(str[str.length -1].toLowerCase())){
+                console.log(competencesListLowerCase[index])
+                if(competencesSearchTerms.indexOf(element) == -1){
+                    competencesSearchTerms.push(competencesListLowerCase[index]);
+                }
+            }
+        });
+
+        console.log(competencesSearchTerms);
+
+        if(competencesSearchTerms.length !== 0){
+            console.log("wtf")
+            const filteredCandidates = candidateList.filter(candidate => {
+                const candidateSkills = candidate.skills.map(skill => skill.toLowerCase());
+                let candidateSkillsMatches = competencesSearchTerms.every((val,i)=>{
+                    console.log(val);
+                    return (candidateSkills.indexOf(val) !== -1)
+                })
+                console.log(candidateSkillsMatches);
+                return candidateSkillsMatches;
+            })
+    
+            resultsArray = resultsArray.concat(filteredCandidates);   
+        }
     }
 
-    checkProfession(searchString.replace(/,\s/g, ',').split(","));
-    checkName(searchString.replace(/,\s/g, ',').split(","));
-    checkSkills(searchString.replace(/,\s/g, ',').split(","));
+    checkProfession(searchString.replace(/\s?,\s/g, ',').split(","));
+    checkName(searchString.replace(/\s?,\s/g, ',').split(","));
+    checkSkills(searchString.replace(/\s?,\s/g, ',').split(","));
 
     console.log(Array.from(new Set(resultsArray)));
     displayCandidates(Array.from(new Set(resultsArray)));
