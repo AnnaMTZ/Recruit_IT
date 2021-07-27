@@ -1,10 +1,52 @@
-// JS all required elements
-const inputBox = document.querySelector(".to-do-inputfield input")
-const addButton = document.querySelector(".to-do-inputfield button")
-const removeButton = document.querySelector(".to-do-list button")
 
+const inputBox = document.querySelector(".to-do-inputfield input"); //het input field van de to-do html wordt aangehaald door variabel inputBox
+const addBtn = document.querySelector(".to-do-inputfield button");//de add button van de to-do html wordt aangehaald door variabel addBtn
+const todoList = document.querySelector(".to-do-list");//de variabel die de inhoud van de to-do list aangeeft
 
+// als op de add knop wordt gedrukt wordt de volgende functie uitgevoerd
+addBtn.onclick = () => { 
+    let userData = inputBox.value; // userData als variabel returns the value of the value attribute of a text field.
+    let getLocalStorage = localStorage.getItem("New Todo"); // getting user entered value
+    if(getLocalStorage == null) { // if local storage = null
+        listArr = []; //creates a blanc array
+    } else{
+        listArr = JSON.parse(getLocalStorage); //transforming json string into a JS object
+    }
+    listArr.push(userData); // pushing or adding user data
+    localStorage.setItem("New Todo", JSON.stringify(listArr));// transforming JS object into a json string
+    showTasks(); // calling show tasks function
+}
 
-// Add tasks to button
+// this function enables me to add task list inside ul
+function showTasks() {
+    let getLocalStorage = localStorage.getItem("New Todo"); //getting localstorage
+    if(getLocalStorage == null) { // if local storage = null
+        listArr = []; //creates a blanc array
+    } else{
+        listArr = JSON.parse(getLocalStorage); //transforming json string into a JS object
+    }
+    // Deze variabel update hoeveel tasks er open staan
+    const pendingNumb = document.querySelector(".pending")
+    pendingNumb.textContent = listArr.length;
+    let newLiTag = ''; // Deze variabel geeft de li's aan
+    listArr.forEach((element, index) => {
+        newLiTag += `<li> ${element}<span onclick="deleteTask(${index})";><i class="fas fa-trash"></i></span></li>`
+    }); // Deze functie is de tag die wordt toegevoegd
+    todoList.innerHTML = newLiTag; // Deze variable zorgt ervoor dat een nieuwe li in de lu wordt gemaakt
+    inputBox.value = ""; // Deze functie zorgt ervoor dat het input veld leeg is
+    // max 10 tasks in list. 
+    // als newLiTag meer dan 10 items heeft dan mag ie niet meer bijmaken
+}
 
-// Make everything
+// this function deletes tasks
+function deleteTask(index){
+    let getLocalStorage = localStorage.getItem("New Todo");
+    listArr = JSON.parse(getLocalStorage);
+    listArr.splice(index, 1); //delete or remove the particulair indexed li
+    // after remove the li again update the local storage
+    localStorage.setItem("New Todo", JSON.stringify(listArr));// transforming JS object into a json string
+    showTasks(); // calling show tasks function
+}
+
+//this function highlights tasks that are of priority
+// Als newLiTag ouder is dan 7 dagen kleur rood 
