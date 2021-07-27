@@ -1,11 +1,11 @@
-// JS all required elements
-const inputBox = document.querySelector(".to-do-inputfield input");
-const addBtn = document.querySelector(".to-do-inputfield button");
-const todoList = document.querySelector(".to-do-list");
 
+const inputBox = document.querySelector(".to-do-inputfield input"); //het input field van de to-do html wordt aangehaald door variabel inputBox
+const addBtn = document.querySelector(".to-do-inputfield button");//de add button van de to-do html wordt aangehaald door variabel addBtn
+const todoList = document.querySelector(".to-do-list");//de variabel die de inhoud van de to-do list aangeeft
 
-addBtn.onclick = () => {
-    let userData = inputBox.value; // variable for input 
+// als op de add knop wordt gedrukt wordt de volgende functie uitgevoerd
+addBtn.onclick = () => { 
+    let userData = inputBox.value; // userData als variabel returns the value of the value attribute of a text field.
     let getLocalStorage = localStorage.getItem("New Todo"); // getting user entered value
     if(getLocalStorage == null) { // if local storage = null
         listArr = []; //creates a blanc array
@@ -25,19 +25,17 @@ function showTasks() {
     } else{
         listArr = JSON.parse(getLocalStorage); //transforming json string into a JS object
     }
-    // for the pending
+    // Deze variabel update hoeveel tasks er open staan
     const pendingNumb = document.querySelector(".pending")
     pendingNumb.textContent = listArr.length;
-    let newLiTag = '';
+    let newLiTag = ''; // Deze variabel geeft de li's aan
     listArr.forEach((element, index) => {
         newLiTag += `<li> ${element}<span onclick="deleteTask(${index})";><i class="fas fa-trash"></i></span></li>`
-    });
-    todoList.innerHTML = newLiTag; // to add new li tag inse the lu tag
-    inputBox.value = ""; // this function will enable that the input field will be blank 
-    // max 10 tasks in list
-    for (let i = 0; i <newLiTag; i++) {
-
-    }
+    }); // Deze functie is de tag die wordt toegevoegd
+    todoList.innerHTML = newLiTag; // Deze variable zorgt ervoor dat een nieuwe li in de lu wordt gemaakt
+    inputBox.value = ""; // Deze functie zorgt ervoor dat het input veld leeg is
+    // max 10 tasks in list. 
+    // als newLiTag meer dan 10 items heeft dan mag ie niet meer bijmaken
 }
 
 // this function deletes tasks
@@ -51,3 +49,4 @@ function deleteTask(index){
 }
 
 //this function highlights tasks that are of priority
+// Als newLiTag ouder is dan 7 dagen kleur rood 

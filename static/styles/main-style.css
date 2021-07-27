@@ -6,13 +6,14 @@
 
 body {
     font-family: "Ubuntu", sans-serif;
+    scroll-behavior: smooth;
 }
 
 a.button, button {
-    background: black;
+    background: #000;
     padding: 18px 22px;
     text-decoration: none;
-    color: white;
+    color: #fff;
     border-radius: 5px;
     /* text-align: center; */
     height: 100%;
@@ -23,6 +24,32 @@ a.button, button {
     border-radius: 5px;
     height:55px;
     cursor: pointer;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+
+}
+
+button.orange {
+    background: #df7d51;
+    padding: 18px 22px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    height: 100%;
+    border: none;
+    font-size:16px;
+    font-family: "Ubuntu", sans-serif;
+    display: inline-block;
+    border-radius: 5px;
+    height:55px;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, transform 0.5s ease-in-out;
+
+}
+
+
+
+button.orange:active {
+  transform: scale(0.98);
 }
 
 a.button:hover, button:hover {
@@ -84,6 +111,7 @@ input[list] {
     font-family: "Ubuntu", sans-serif;
     font-size:16px;
     background:white;
+    outline:none;
 }
 
 input[type="search"]::placeholder,
@@ -109,6 +137,7 @@ textarea{
     font-family:"Ubuntu", sans-serif;
     font-size:16px;
     padding:10px 10px;
+    outline: none;
 }
 
 textarea::placeholder{
