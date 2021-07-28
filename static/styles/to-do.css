@@ -44,6 +44,11 @@ section#to-do-list .to-do-inputfield button {
     cursor: pointer;
     padding: 18px 20px;
     border-radius: 0 5px 5px 0;
+    pointer-events: auto;
+}
+
+section#to-do-list .to-do-inputfield button.disabled {
+    pointer-events: none;
 }
 
 section#to-do-list .to-do-inputfield button:hover {
@@ -85,6 +90,7 @@ section#to-do-list .to-do-list li button {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+
 }
 
 section#to-do-list .to-do-list li a:hover{}
