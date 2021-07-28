@@ -1,4 +1,4 @@
-
+/*
 const inputBox = document.querySelector(".to-do-inputfield input"); //het input field van de to-do html wordt aangehaald door variabel inputBox
 const addBtn = document.querySelector(".to-do-inputfield button");//de add button van de to-do html wordt aangehaald door variabel addBtn
 const todoList = document.querySelector(".to-do-list");//de variabel die de inhoud van de to-do list aangeeft
@@ -47,6 +47,28 @@ function deleteTask(index){
     localStorage.setItem("New Todo", JSON.stringify(listArr));// transforming JS object into a json string
     showTasks(); // calling show tasks function
 }
-
+*/
 //this function highlights tasks that are of priority
 // Als newLiTag ouder is dan 7 dagen kleur rood 
+
+
+var list = [];
+var input = document.getElementById["to-do-input"];
+var todoList = document.getElementsByClassName["to-do-list"];
+
+function showList (){
+    todoList.innerHTML = "";
+    list.forEach(function(n, i){
+    todoList.innerHTML = "<li>"+n+"<a onclick='deleteItem("+i+")'></span></li>";
+    })
+}
+
+document.getElementById("btn").addEventListener("click", function(){
+    list.push(input.value);
+    showList()
+})
+
+function deleteItem (i) {
+    list.splice(i, 1)
+    showList()
+}

@@ -85,7 +85,7 @@ section#to-do-list .to-do-list li span {
     transition: all 0.3s ease;
 }
 
-section#to-do-list .to-do-list li span:hover{
+section#to-do-list .to-do-list li a:hover{
     background:#333;
 }
 
