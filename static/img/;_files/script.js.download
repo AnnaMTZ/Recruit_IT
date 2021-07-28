@@ -1,0 +1,9 @@
+const vacationDaysField = document.getElementById("vacationDaysField");
+const salaryField = document.getElementById("salaryField");
+const calcButton = document.getElementById("calcButton");
+
+calcButton.addEventListener("click", (event)=>{
+    if(salaryField.value && calcButton.value ){
+        console.log("hey")
+    }
+})

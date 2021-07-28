@@ -30,7 +30,7 @@ function showTasks() {
     pendingNumb.textContent = listArr.length;
     let newLiTag = ''; // Deze variabel geeft de li's aan
     listArr.forEach((element, index) => {
-        newLiTag += `<li> ${element}<span onclick="deleteTask(${index})";><i class="fas fa-trash"></i></span></li>`
+        newLiTag += `<li> ${element}<button onclick="deleteTask(${index})";><i class="fas fa-trash"></i></button></li>`
     }); // Deze functie is de tag die wordt toegevoegd
     todoList.innerHTML = newLiTag; // Deze variable zorgt ervoor dat een nieuwe li in de lu wordt gemaakt
     inputBox.value = ""; // Deze functie zorgt ervoor dat het input veld leeg is

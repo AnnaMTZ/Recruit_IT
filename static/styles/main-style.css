@@ -9,7 +9,64 @@ body {
     scroll-behavior: smooth;
 }
 
-a.button, button {
+section.hide {
+    display: none;
+}
+
+@media only screen and (min-width: 800px) {
+    section.hide {
+        display: block;
+    }
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background: #063848;
+}
+
+nav ul {
+    display: flex;
+    width: 200vw;
+    overflow-x: auto;
+    align-items: center;
+    white-space: nowrap;
+}
+
+nav ul li {
+    padding: 30px 0px;
+    list-style: none;
+}
+
+nav ul li:first-of-type {
+    margin-left: 20px;
+}
+
+nav ul li:not(:last-of-type) {
+    margin-right: 10px;
+}
+
+nav ul li a {
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 1000px;
+    border: 2px solid white;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+nav ul li a:hover {
+    padding: 10px 20px;
+    color: #282b2c;
+    text-decoration: none;
+    background-color: #d8d0c5;
+    border-radius: 1000px;
+    border: 2px solid #fff;
+}
+
+a.button,
+button {
     background: #000;
     padding: 18px 22px;
     text-decoration: none;
@@ -18,14 +75,13 @@ a.button, button {
     /* text-align: center; */
     height: 100%;
     border: none;
-    font-size:16px;
+    font-size: 16px;
     font-family: "Ubuntu", sans-serif;
     display: inline-block;
     border-radius: 5px;
-    height:55px;
+    height: 55px;
     cursor: pointer;
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-
 }
 
 button.orange {
@@ -36,45 +92,43 @@ button.orange {
     border-radius: 5px;
     height: 100%;
     border: none;
-    font-size:16px;
+    font-size: 16px;
     font-family: "Ubuntu", sans-serif;
     display: inline-block;
     border-radius: 5px;
-    height:55px;
+    height: 55px;
     cursor: pointer;
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, transform 0.5s ease-in-out;
-
 }
-
-
 
 button.orange:active {
-  transform: scale(0.98);
+    transform: scale(0.98);
 }
 
-a.button:hover, button:hover {
+a.button:hover,
+button:hover {
     background: #333;
 }
 
-h1{
+h1 {
     font-size: 32px;
     font-weight: bold;
 }
 
-h2{
-    font-size:24px;
-    font-weight:bold;
+h2 {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-h3{
-    font-size:18px;
+h3 {
+    font-size: 18px;
 }
 
-p{
-    font-size:16px;
+p {
+    font-size: 16px;
 }
 
-body{
+body {
     background: #d8d0c5;
 }
 
@@ -82,17 +136,16 @@ header {
     padding: 20px 20px;
     text-align: center;
     color: white;
-    background:#618b98;
+    background: #618b98;
 }
 
-
-div.content{
-    display:flex;
-    flex-wrap:wrap;
+div.content {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-div.content section{
-    flex-basis:100%;
+div.content section {
+    flex-basis: 100%;
 }
 
 input[type="search"],
@@ -100,62 +153,65 @@ input[type="text"],
 input[type="date"],
 input[type="email"],
 input[type="tel"],
+input[type="password"],
 input[list] {
     height: 55px;
-    border-radius: 5px;
+     border-radius: 5px;
     border: none;
-    width:80%;
+    width: 80%;
     padding: 0 10px;
-    flex-basis:100%;
+    flex-basis: 100%;
     border: 1px #ababab solid;
-    font-family: "Ubuntu", sans-serif;
+    font-family: "Ubuntu", sans-serif; 
     font-size:16px;
     background:white;
-    outline:none;
 }
 
 input[type="search"]::placeholder,
 input[type="text"]::placeholder,
 input[type="date"]::placeholder,
 input[type="email"]::placeholder,
-input[type="tel"]::placeholder{
+input[type="tel"]::placeholder,
+input[type="password"]::placeholder {
     color: #ababab;
     font-style: italic;
-    font-size:14px;
+    font-size: 14px;
 }
 
-input[type="checkbox"]{
-    height:25px;
-    width:25px;
-} 
+input[type="checkbox"] {
+    height: 25px;
+    width: 25px;
+}
 
-textarea{
-    width:100%;
-    height:200px;
+textarea {
+    width: 100%;
+    height: 200px;
     border-radius: 5px;
-    border:none;
-    font-family:"Ubuntu", sans-serif;
-    font-size:16px;
-    padding:10px 10px;
+    border: none;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+    padding: 10px 10px;
     outline: none;
 }
 
-textarea::placeholder{
-    color:#ababab;
+textarea::placeholder {
+    color: #ababab;
     font-style: italic;
-    font-size:16px;
+    font-size: 16px;
 }
 
-fieldset{
-    border:none;
+fieldset {
+    border: none;
 }
 
 @media only screen and (min-width: 800px) {
-    div.content{
-        flex-wrap:nowrap;
+    div.content {
+        flex-wrap: nowrap;
     }
-
-    div.content section{
-        flex-basis:50%;
+    div.content section {
+        flex-basis: 50%;
+    }
+    nav {
+        display: none;
     }
 }

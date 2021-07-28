@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  font-family: "Ubuntu", sans-serif;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  height: 100vh;
+  width:80%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form input#username, input#password {
+    outline: none;
+    border: 3px solid #282b2c;
+    flex-basis: 55px;
+    border-color: black;
+    max-width: 300px;
+    transition: border-color .3s ease-in-out;
+}
+
+.form input#username.error, input#password.error {
+border: 3px solid red;
+  }
+  
+  .form input#username.success, input#password.success {
+ border: 3px solid greenyellow;
+      }
+
+      .form small.loginMessage.error, small.pwMessage.error {
+        visibility: visible;
+        color: red;
+       
+      }
+
+
+     .error {
+        visibility: visible;
+        color: red;
+       
+      }
+
+.form small {
+  visibility: hidden;
+  margin-bottom: 1rem;
+}
+
+.button {
+    width: 6rem;
+}
+
+
