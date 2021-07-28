@@ -87,11 +87,8 @@ section#to-do-list .to-do-list li button {
     transition: all 0.3s ease;
 }
 
-<<<<<<< HEAD
-section#to-do-list .to-do-list li a:hover{
-=======
+section#to-do-list .to-do-list li a:hover{}
 /* section#to-do-list .to-do-list li span:hover{
->>>>>>> 6a1633a01eaf2438e0779e2d85868f455e52b155
     background:#333;
 }
 
