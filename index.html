@@ -8,7 +8,8 @@
     <title>Landing page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link href="static/styles/fontawesome.min.css" rel="stylesheet">
     <link href="static/styles/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/styles/main-style.css">
@@ -20,8 +21,14 @@
     <header>
         <h1>RecruitIT</h1>
     </header>
+    <nav>
+        <ul>
+            <li id="toDoSectionLink"><a>To-do list</a></li>
+            <li id="candidateSectionLink"><a>Candidate section</a></li>
+        </ul>
+    </nav>
     <div class="content row">
-        <section id="to-do-list">
+        <section class="hide" id="to-do-list">
             <div class="to-do-wrapper">
                 <h2>Recruit IT To-do list</h2>
                 <div class="to-do-inputfield">
@@ -61,20 +68,23 @@
                         <fieldset class="work-abroad">
                             <legend>Willingness to work abroad:</legend>
                             <div class="work-benelux">
-                                <input type="checkbox" name="work-benelux" id="work-benelux"><label for="work-benelux">Benelux</label>
+                                <input type="checkbox" name="work-benelux" id="work-benelux"><label
+                                    for="work-benelux">Benelux</label>
                             </div>
                             <div class="work-europe">
-                                <input type="checkbox" name="work-europe" id="work-europe"><label for="work-europe">Europe</label>
+                                <input type="checkbox" name="work-europe" id="work-europe"><label
+                                    for="work-europe">Europe</label>
                             </div>
 
                             <div class="work-global">
-                                <input type="checkbox" name="work-global" id="work-global"><label for="work-global">Global</label>
+                                <input type="checkbox" name="work-global" id="work-global"><label
+                                    for="work-global">Global</label>
                             </div>
                         </fieldset>
                     </form>
                 </div>
             </div>
-    
+
             <div class="results">
                 <ul id="results">
 
@@ -84,6 +94,7 @@
     </div>
 </body>
 <script src="static/scripts/app.js"></script>
+<script src="./static/scripts/sections.js"></script>
 
 <script src="static/scripts/to-do.js"></script>
 </body>

@@ -104,7 +104,6 @@ searchBar.addEventListener('input', (e) => {
         console.log(competencesSearchTerms);
 
         if(competencesSearchTerms.length !== 0){
-            console.log("wtf")
             const filteredCandidates = candidateList.filter(candidate => {
                 const candidateSkills = candidate.skills.map(skill => skill.toLowerCase());
                 let candidateSkillsMatches = competencesSearchTerms.every((val,i)=>{
