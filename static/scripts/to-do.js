@@ -52,7 +52,7 @@ function deleteTask(index){
 // Als newLiTag ouder is dan 7 dagen kleur rood 
 
 
-var list = ["Ken Bellen", "Firenzo mailen", "Anna Whatsappen", "Meeting met Ken", "CV van Ken doorsturen", "Pauze houden", "Gesprek met Gabriel inplannen", "Herinnering sturen aan Firenzo om CV bij te werken", "CV van Anna in het systeem zetten"];
+var list = ["Ken Bellen", "Firenzo mailen", "Anna Whatsappen", "Meeting met Ken", "CV van Ken doorsturen", "Pauze houden", "Gesprek met Gabriel inplannen", "Herinnering sturen aan Firenzo om CV bij te werken", "CV van Anna in het systeem zetten", "Herinnering sturen aan Redmar om CV bij te werken"];
 var input = document.getElementById("to-do-input");
 var todoList = document.getElementById("to-do-list-li");
 var button = document.getElementById("btn-add-todo");
