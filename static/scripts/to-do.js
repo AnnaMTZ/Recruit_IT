@@ -52,10 +52,40 @@ function deleteTask(index){
 // Als newLiTag ouder is dan 7 dagen kleur rood 
 
 
-var list = [];
-var input = document.getElementById["to-do-input"];
-var todoList = document.getElementsByClassName["to-do-list"];
+var list = ["redmar", "firenzo"];
+var input = document.getElementById("to-do-input");
+var todoList = document.getElementById("to-do-list-li");
+var button = document.getElementById("btn-add-todo");
 
+const displayToDo = (todos) => {
+    const htmlString = todos.map((todo, index) => {
+        return `<li> ${todo}<button onclick="deleteTask(${index})";><i class="fas fa-trash"></i></button></li>`;
+    }).join('');
+    todoList.innerHTML = htmlString;
+}
+
+displayToDo(list)
+
+button.addEventListener("click", function(){
+    list.push(input.value);
+    displayToDo(list);
+})
+
+input.addEventListener("keyup", function(){
+    if (input.value == '') {
+        button.classList.add("disabled");
+    } else {
+        button.classList.remove("disabled");
+    }
+})
+
+function deleteTask (i) {
+    list.splice(i, 1)
+    displayToDo()
+}
+
+
+/*
 function showList (){
     todoList.innerHTML = "";
     list.forEach(function(n, i){
@@ -68,7 +98,7 @@ document.getElementById("btn").addEventListener("click", function(){
     showList()
 })
 
-function deleteItem (i) {
+function deleteTask (i) {
     list.splice(i, 1)
     showList()
-}
+}*/
