@@ -153,25 +153,26 @@ input[type="text"],
 input[type="date"],
 input[type="email"],
 input[type="tel"],
+input[type="password"],
 input[list] {
     height: 55px;
-    border-radius: 5px;
+     border-radius: 5px;
     border: none;
     width: 80%;
     padding: 0 10px;
     flex-basis: 100%;
     border: 1px #ababab solid;
-    font-family: "Ubuntu", sans-serif;
-    font-size: 16px;
-    background: white;
-    outline: none;
+    font-family: "Ubuntu", sans-serif; 
+    font-size:16px;
+    background:white;
 }
 
 input[type="search"]::placeholder,
 input[type="text"]::placeholder,
 input[type="date"]::placeholder,
 input[type="email"]::placeholder,
-input[type="tel"]::placeholder {
+input[type="tel"]::placeholder,
+input[type="password"]::placeholder {
     color: #ababab;
     font-style: italic;
     font-size: 14px;
