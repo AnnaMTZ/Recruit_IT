@@ -153,7 +153,6 @@ document.getElementById("link-to-outdated-cvs").addEventListener("click", ()=>{
 
 function showOutdatedcvs(){
     resultsArray =[]
-    console.log("je vader");
     searchBar.value = "!OUTDATED";
     searchBar.classList.add("specialCommand")
     const filteredCandidates = candidateList.filter(candidate => {
