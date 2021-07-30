@@ -3,31 +3,35 @@ const candidateList = [
     {
         name: "Redmar",
         lastName: "Woest",
-        profession: "Front End Developer",
+        profession: "Front end developer",
         skills: ["HTML", "CSS", "JavaScript", "Nodejs"],
-        lastUpdated: "13-05-2020"
+        lastUpdated: "13-05-2020",
+        outdated: true
     },
 
     {
         name: "Anna",
         lastName: "Mykhailenko",
-        profession: "Business Analist",
+        profession: "Lead front end developer",
         skills: ["CSS", "JavaScript", "Nodejs"],
-        lastUpdated: "13-05-2020"
+        lastUpdated: "13-05-2020",
+        outdated: false
     },
     {
         name: "Ken",
         lastName: "Cheung",
         profession: "Data scientist",
         skills: ["HTML", "CSS", "JavaScript"],
-        lastUpdated: "13-05-2020"
+        lastUpdated: "13-05-2020",
+        outdated: false
     },
     {
         name: "Firenzo",
         lastName: "Jorden",
-        profession: "Back End Developer",
+        profession: "Back end developer",
         skills: ["HTML", "JavaScript", "Nodejs", "GraphQL"],
-        lastUpdated: "13-05-2020"
+        lastUpdated: "13-05-2020",
+        outdated: true
     }
 ]
 
@@ -57,6 +61,14 @@ searchBar.addEventListener('input', (e) => {
     resultsArray = [];
     let searchString = e.target.value;
     
+    function getOnlyOutdatedCvs(str){
+        resultsArray = [];
+        const filteredCandidates = candidateList.filter(candidate => {
+            return  candidate.outdated === true
+        })
+        console.log(filteredCandidates)
+        resultsArray = resultsArray.concat(filteredCandidates);
+    }
 
     function checkProfession(str){
         str.forEach(i => {
@@ -118,12 +130,37 @@ searchBar.addEventListener('input', (e) => {
         }
     }
 
-    checkProfession(searchString.replace(/\s?,\s/g, ',').split(","));
-    checkName(searchString.replace(/\s?,\s/g, ',').split(","));
-    checkSkills(searchString.replace(/\s?,\s/g, ',').split(","));
+    if(searchString ==="!OUTDATED"){
+        searchBar.classList.add("specialCommand")
+        getOnlyOutdatedCvs(e.target.value);
+    } else {
+        searchBar.classList.remove("specialCommand")
+        checkProfession(searchString.replace(/\s?,\s/g, ',').split(","));
+        checkName(searchString.replace(/\s?,\s/g, ',').split(","));
+        checkSkills(searchString.replace(/\s?,\s/g, ',').split(","));
+    }
 
     console.log(Array.from(new Set(resultsArray)));
     displayCandidates(Array.from(new Set(resultsArray)));
 })
+
+
+document.getElementById("link-to-outdated-cvs").addEventListener("click", ()=>{
+    showOutdatedcvs()
+})
+
+// is niet netjes, I know
+
+function showOutdatedcvs(){
+    resultsArray =[]
+    searchBar.value = "!OUTDATED";
+    searchBar.classList.add("specialCommand")
+    const filteredCandidates = candidateList.filter(candidate => {
+        return  candidate.outdated === true
+    })
+    console.log(filteredCandidates)
+    resultsArray = resultsArray.concat(filteredCandidates);
+    displayCandidates(Array.from(new Set(resultsArray)));
+}
 
 displayCandidates(candidateList);

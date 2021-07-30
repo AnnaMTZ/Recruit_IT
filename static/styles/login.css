@@ -22,6 +22,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transform:translateY(-10vh);
+}
+
+.form img{
+  width:100%;
+  max-width:350px;
+  /* height:100%; */
+  border-radius:10px;
+  margin-bottom:40px;
 }
 
 .form input#username, input#password {

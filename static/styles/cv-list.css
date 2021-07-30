@@ -30,10 +30,6 @@ section#cv-list div.cv-list-header h2 {
     flex-basis:calc(100% - 140px);
 }
 
-section#cv-list div.search-area div.searchbar form{
-    
-}
-
 section#cv-list div.search-area div.searchbar form fieldset{
     border:none;
 }
@@ -58,6 +54,11 @@ section#cv-list div.search-area div.searchbar form fieldset.skills input[type="s
     border: 1px #ababab solid;
     font-family: "Ubuntu", sans-serif;
     font-size:16px;
+}
+
+section#cv-list div.search-area div.searchbar form fieldset.skills input[type="search"].specialCommand{
+    font-weight:bold;
+    color:#df7d51;
 }
 
 section#cv-list div.search-area div.searchbar form fieldset.skills input[type="search"]::placeholder {
@@ -140,7 +141,8 @@ section#cv-list div.cv-status p{
     color:white;
 }
 
-section#cv-list div.cv-status p a.highlight{
+section#cv-list div.cv-status p span.highlight{
+    cursor: pointer;
     text-decoration: underline;
     color:white;
 }
