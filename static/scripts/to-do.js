@@ -79,6 +79,7 @@ input.addEventListener("keyup", function(){
     }
 })
 
+
 function deleteTask (i) {
     list.splice(i, 1)
     displayToDo()
