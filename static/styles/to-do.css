@@ -16,7 +16,7 @@ section#to-do-list .to-do-wrapper h2 {
 
 section#to-do-list .to-do-inputfield {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     align-items: center;
     width: 100%;
     margin: 20px 0;
@@ -35,15 +35,17 @@ section#to-do-list .to-do-inputfield input {
 }
 
 section#to-do-list .to-do-inputfield button {
-    flex-basis: 55px;
+    /* flex-basis: 55px;
+    flex-basis: 25%; */
     height: 100%;
     border: none;
     outline: none;
     background: black;
     color: #fff;
     cursor: pointer;
-    padding: 18px 20px;
-    border-radius: 0 5px 5px 0;
+    /* padding: 18px 20px; */
+    /* border-radius: 0 5px 5px 0; */
+ 
     pointer-events: auto;
 }
 
@@ -68,32 +70,33 @@ section#to-do-list .to-do-list li {
     position: relative;
     background: #fff;
     border-radius: 5px;
-    border: 1px solid #ababab;
+    border: 2px solid #ababab;
     margin-bottom: 10px;
     padding: 0 15px;
     list-style: none;
     overflow: hidden;
-    
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: 0.1s ease-in-out;
 }
 
-section#to-do-list .to-do-list li.urgent-task{
-    border-color: red;
-}
-
-section#to-do-list .to-do-list li button {
-    position: absolute;
-    right: -55px;
-    color: #fff;
+section#to-do-list .to-do-list li button.deleteBtn {
+      position: absolute; 
+   right: -55px;
+   color: #fff;
     width: 55px;
     text-align: center;
     background: black;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
-
+align-self: flex-end;
 }
 
-section#to-do-list .to-do-list li a:hover{}
+
+
+/* section#to-do-list .to-do-list li a:hover{} */
 /* section#to-do-list .to-do-list li span:hover{
     background:#333;
 }
@@ -108,6 +111,46 @@ section#to-do-list .to-do-list li:hover button {
     right:0;
 }
 
+/* // Added 30/07/21 */
+
+
+
+
+.colorBtn {
+padding: 0 0 0 0;
+font-size: 10px;
+border-radius: 0px;
+cursor: pointer;
+position: relative;
+}
+
+
+
+/* section#to-do-list .to-do-wrapper .to-do-inputfield > button {
+background: #fff;
+color: #000;
+}  */
+
+/* !!!!!!!!!!!!!!!!! */
+
+section#to-do-list .to-do-list li button.colorBtn {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    border-radius: 3px;
+    background-color: #618b98;
+    }
+
+    section#to-do-list .to-do-list li button.colorBtn.toggleClass {
+        background-color: black;
+    }
+
+
+section#to-do-list .to-do-list li.toggleClass {
+border: 2px solid orangered;
+}
+
+/* /// */
 @media (hover: none) and (pointer: coarse) {
     section#to-do-list .to-do-list li button {
         right: 0px;
