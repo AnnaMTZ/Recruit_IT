@@ -16,7 +16,7 @@ section#to-do-list .to-do-wrapper h2 {
 
 section#to-do-list .to-do-inputfield {
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     align-items: center;
     width: 100%;
     margin: 20px 0;
@@ -35,16 +35,15 @@ section#to-do-list .to-do-inputfield input {
 }
 
 section#to-do-list .to-do-inputfield button {
-    /* flex-basis: 55px;
-    flex-basis: 25%; */
+    flex-basis: 55px;
     height: 100%;
     border: none;
     outline: none;
     background: black;
     color: #fff;
     cursor: pointer;
-    /* padding: 18px 20px; */
-    /* border-radius: 0 5px 5px 0; */
+    padding: 18px 20px;
+    border-radius: 0 5px 5px 0;
  
     pointer-events: auto;
 }
@@ -75,9 +74,7 @@ section#to-do-list .to-do-list li {
     padding: 0 15px;
     list-style: none;
     overflow: hidden;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+
     transition: 0.1s ease-in-out;
 }
 
@@ -140,6 +137,8 @@ section#to-do-list .to-do-list li button.colorBtn {
     border-radius: 3px;
     background-color: #618b98;
     }
+
+
 
     section#to-do-list .to-do-list li button.colorBtn.toggleClass {
         background-color: black;
