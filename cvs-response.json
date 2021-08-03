@@ -1,0 +1,58 @@
+{
+  "success": true,
+  "data": {
+    "-Mf2Kay5wXhSNpLk58Kj": {
+      "description": "CV van dirk",
+      "education": {
+        "-Mf2fBQDZdQ8BGvoWtle": {
+          "description": "leuke schoasdsasadol",
+          "educationName": "asd",
+          "from": "123",
+          "gratuated": false,
+          "schoolName": "Iets anders",
+          "until": "asd"
+        },
+        "-Mf2fCSlLGbw38wzrLvz": {
+          "description": "leuke schoasdsasadol",
+          "educationName": "asd",
+          "from": "123",
+          "gratuated": false,
+          "schoolName": "Avans",
+          "until": "asd"
+        }
+      },
+      "hobbies": "asdadsa",
+      "jobs": {
+        "-Mf2d6RE0pA8qExra-75": {
+          "description": "asd",
+          "from": "123",
+          "function": "asd",
+          "until": "asd"
+        },
+        "-Mf2d85T9C663RM3gByt": {
+          "description": "as123123122321d",
+          "from": "123",
+          "function": "asd",
+          "until": "asd"
+        }
+      },
+      "person": {
+        "address": {
+          "city": "Wageningen",
+          "country": "Nederland",
+          "houseNumber": "12a",
+          "street": "Laan van Dirks",
+          "zipCode": "4232AW"
+        },
+        "age": 30,
+        "dateOfBirth": "02-07-1991",
+        "driversLicense": true,
+        "email": "dirk.wolthuis@capgemini.com",
+        "firstName": "Suze",
+        "lastName": "Wolthuis",
+        "phoneNumber": "0624242424"
+      },
+      "references": "asddsada"
+    }
+  }
+}

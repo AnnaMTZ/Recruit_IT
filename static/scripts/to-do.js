@@ -59,16 +59,26 @@ var button = document.getElementById("btn-add-todo");
 
 const displayToDo = (todos) => {
     const htmlString = todos.map((todo, index) => {
-        return `<li> ${todo}<button onclick="deleteTask(${index})";><i class="fas fa-trash"></i></button></li>`;
+        return `<li> 
+   
+        <button class="color_btn urgent colorBtn" onclick="showColor(this)" id="btnUrgent"><i class="fas fa-exclamation"></i></button>
+        ${todo} 
+     
+        <button class="deleteBtn" onclick="deleteTask(${index})";><i class="fas fa-trash"></i></button>
+       
+        </li>` ;
     }).join('');
     todoList.innerHTML = htmlString;
 }
+
 
 displayToDo(list)
 
 button.addEventListener("click", function(){
     list.push(input.value);
     displayToDo(list);
+    input.value = '';
+    button.classList.add("disabled");
 })
 
 input.addEventListener("keyup", function(){
@@ -84,21 +94,10 @@ function deleteTask (i) {
     displayToDo(list);
 }
 
+function showColor(button) {
+    const changeColor = button.parentElement;
+    changeColor.classList.toggle("toggleClass");
+    button.classList.toggle("toggleClass");
 
-/*
-function showList (){
-    todoList.innerHTML = "";
-    list.forEach(function(n, i){
-    todoList.innerHTML = "<li>"+n+"<a onclick='deleteItem("+i+")'></span></li>";
-    })
 }
 
-document.getElementById("btn").addEventListener("click", function(){
-    list.push(input.value);
-    showList()
-})
-
-function deleteTask (i) {
-    list.splice(i, 1)
-    showList()
-}*/
