@@ -35,16 +35,27 @@ const candidateList = [
     }
 ]
 
-const displayCandidates = (candidates) => {
-    const htmlString = candidates.map((candidate) => {
+const fetchCandidates = async () => {
+    const res = await fetch('https://cv-backend.ikbendirk.nl/cvs')
+        .then(res => res.json())
+        .then(json => json.data)
+
+    displayCandidates(Object.entries(res));
+    console.log(Object.entries(res));
+}
+
+
+function displayCandidates (candidates)  {
+    const htmlString = candidates.map(([key, candidateInfo]) => {
         return `
             <li>
                 <div class="candidate-picture">
                     <img src="static/img/placeholder-image.png" alt="profile picture">
                 </div>
+
                 <div class="candidate-information">
-                    <h3>${candidate.name} ${candidate.lastName}</h3>
-                    <p class="role">${candidate.profession}</p>
+                    <h3>${key} ${key}</h3>
+                    <p class="role">${key}</p>
                     <a href="#" class="button">View candidate <i class="fas fa-chevron-right"></i></a>
                 </div>
             </li>
@@ -60,15 +71,6 @@ let resultsArray = [];
 searchBar.addEventListener('input', (e) => {
     resultsArray = [];
     let searchString = e.target.value;
-    
-    function getOnlyOutdatedCvs(str){
-        resultsArray = [];
-        const filteredCandidates = candidateList.filter(candidate => {
-            return  candidate.outdated === true
-        })
-        console.log(filteredCandidates)
-        resultsArray = resultsArray.concat(filteredCandidates);
-    }
 
     function checkProfession(str){
         str.forEach(i => {
@@ -132,12 +134,15 @@ searchBar.addEventListener('input', (e) => {
 
     if(searchString ==="!OUTDATED"){
         searchBar.classList.add("specialCommand")
-        getOnlyOutdatedCvs(e.target.value);
+        showOutdatedcvs();
     } else {
         searchBar.classList.remove("specialCommand")
-        checkProfession(searchString.replace(/\s?,\s/g, ',').split(","));
-        checkName(searchString.replace(/\s?,\s/g, ',').split(","));
-        checkSkills(searchString.replace(/\s?,\s/g, ',').split(","));
+
+        let strippedInput = searchString.replace(/\s?,\s/g, ',').split(",")
+
+        checkProfession(strippedInput);
+        checkName(strippedInput);
+        checkSkills(strippedInput);
     }
 
     console.log(Array.from(new Set(resultsArray)));
@@ -146,10 +151,9 @@ searchBar.addEventListener('input', (e) => {
 
 
 document.getElementById("link-to-outdated-cvs").addEventListener("click", ()=>{
-    showOutdatedcvs()
+    showOutdatedcvs();
+    displayCandidates(Array.from(new Set(resultsArray)));
 })
-
-// is niet netjes, I know
 
 function showOutdatedcvs(){
     resultsArray =[]
@@ -160,7 +164,6 @@ function showOutdatedcvs(){
     })
     console.log(filteredCandidates)
     resultsArray = resultsArray.concat(filteredCandidates);
-    displayCandidates(Array.from(new Set(resultsArray)));
 }
 
-displayCandidates(candidateList);
+fetchCandidates();
