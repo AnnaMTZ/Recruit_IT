@@ -41,8 +41,9 @@
                     <img src="static/img/placeholder-image.png" alt="profile picture">
                 </div>
                 <div class="name-and-role">
-                    <input type="text" placeholder="Candidate name" class="candidate-name">
-                    <input type="text" placeholder="Candidate role / profession" class="candidate-role">
+                    <input type="text" placeholder="First name" class="candidate-first-name" id="candidate-first-name">
+                    <input type="text" placeholder="Last name" class="candidate-last-name" id="candidate-last-name">
+                    <input type="text" placeholder="Candidate role / profession" class="candidate-role" id="candidate-profession">
                 </div>
             </fieldset>
 
@@ -170,13 +171,12 @@
             </fieldset>
 
             <section id="save-candidate">
-                <button class="orange"><i class="fas fa-save"></i>Save candidate</button>
-            </section>
-
-            <section id="add-candidate">
-                <button class=""><i class="fas fa-plus"></i>Add candidate</button>
+                <button id="saveCandidateButton" class="orange"><i class="fas fa-save"></i>Save candidate</button>
+                <p id="statusText">Changes have been saved</p>
             </section>
     </main>
 </body>
+
+<script src="static/scripts/cv-page.js"></script>
 
 </html>
