@@ -68,7 +68,7 @@ function displayCandidates (candidates)  {
                         ${insertFirstName(candidateInfo)}
                         ${insertLastName(candidateInfo)}
                     </h3>
-                    <p class="role">${key}</p>
+                    <p class="role">${candidateInfo.description}</p>
                     <a href="cv-page.html#${key}" class="button">View candidate <i class="fas fa-chevron-right"></i></a>
                 </div>
             </li>
