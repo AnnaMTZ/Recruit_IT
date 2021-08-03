@@ -57,18 +57,34 @@ var input = document.getElementById("to-do-input");
 var todoList = document.getElementById("to-do-list-li");
 var button = document.getElementById("btn-add-todo");
 
-const displayToDo = (todos) => {
-    const htmlString = todos.map((todo, index) => {
-        return `<li> ${todo}<button onclick="deleteTask(${index})";><i class="fas fa-trash"></i></button></li>`;
-    }).join('');
-    todoList.innerHTML = htmlString;
-}
+const fetchToDo = fetch("https://cv-backend.ikbendirk.nl/todos")
+    .then(response => response.json())
+    .then(JSON => {
+   console.log(JSON)
+        let userToDo = ``;
 
-displayToDo(list)
+        Object.entries(JSON).forEach(([key, value]) => {
+            console.log(JSON[key].todos)
+            // userToDo += `<div>
+            //     <p>${todos.taskName} </p>     
+            // </div>`;
+        });
+
+    document.getElementById("to-do-list-li").innerHTML = fetchToDo;
+});
+
+// const displayToDo = (todos) => {
+//     const htmlString = todos.map((todo, index) => {
+//         return `<li> ${todo}<button onclick="deleteTask(${index})";><i class="fas fa-trash"></i></button></li>`;
+//     }).join('');
+//     todoList.innerHTML = htmlString;
+// }
+
+// displayToDo(list)
 
 button.addEventListener("click", function(){
     list.push(input.value);
-    displayToDo(list);
+    userToDo(list);
 })
 
 input.addEventListener("keyup", function(){
@@ -84,5 +100,5 @@ function deleteTask (i) {
     displayToDo(list);
 }
 
-const pendingNumb = document.querySelector(".pending")
-pendingNumb.textContent = htmlString.length;
+// const pendingNumb = document.querySelector(".pending")
+// pendingNumb.textContent = htmlString.length;
