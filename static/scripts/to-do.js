@@ -2,6 +2,7 @@ var list = [];
 var input = document.getElementById("to-do-input");
 var todoList = document.getElementById("to-do-list-li");
 var button = document.getElementById("btn-add-todo");
+const pendingTasks = document.getElementById("pendingTasks");
 let toDoListData;
 
 const fetchToDos = async () => {
@@ -26,6 +27,7 @@ function displayToDos(toDos) {
         `;
     }).join('');
     document.getElementById("to-do-list-li").innerHTML = htmlString;
+    pendingTasks.innerHTML = `You have ${toDoListData.length} pending tasks`
 }
 
 button.addEventListener("click", function(){

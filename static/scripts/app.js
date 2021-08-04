@@ -54,6 +54,7 @@ const hasLastName = (candidateInfo) => (candidateInfo.hasOwnProperty("person") &
 const insertFirstName = (candidateInfo) => hasFirstName(candidateInfo) ?  candidateInfo.person.firstName : "Kees"
 const insertLastName = (candidateInfo) => hasLastName(candidateInfo) ?  candidateInfo.person.lastName : "van Straten"
 
+const hasCity = (candidateInfo) => (candidateInfo.hasOwnProperty("person") && candidateInfo.person.address.hasOwnProperty("city"))
 
 function displayCandidates (candidates)  {
     const htmlString = candidates.map(([key, candidateInfo]) => {
@@ -81,8 +82,6 @@ function displayCandidates (candidates)  {
 const searchBar = document.getElementById("searchCandidates");
 let resultsArray = [];
 
-
-
 function filterName(str){
     str.forEach(i => {
 
@@ -90,6 +89,7 @@ function filterName(str){
             console.log(key)
             if(hasFirstName(candidate) && hasLastName(candidate)){
                 console.log(candidate.person.firstName.toLowerCase().concat(" ", candidate.person.lastName.toLowerCase()));
+                //Return alle matches op basis van "Voornaam + Achternaam ongeacht of er een spatie wordt vergeten of niet"
                 return  candidate.person.firstName.toLowerCase().concat(" ", candidate.person.lastName.toLowerCase()).includes(i.toLowerCase()) ||
                         candidate.person.firstName.toLowerCase().concat(candidate.person.lastName.toLowerCase()).includes(i.toLowerCase()) ||
                         candidate.person.lastName.toLowerCase().concat(" ", candidate.person.firstName.toLowerCase()).includes(i.toLowerCase()) ||
@@ -102,22 +102,37 @@ function filterName(str){
     });
 }
 
+function filterCity(str){
+    str.forEach(i => {
+        const filteredCandidates = candidateList.filter(([key,candidate]) => {
+            console.log(key)
+            if(hasCity(candidate)){
+                return  candidate.person.address.city.toLowerCase().includes(i.toLowerCase())
+            } else {
+                return false;
+            }
+        })
+        resultsArray = resultsArray.concat(filteredCandidates);
+    });
+}
+
+function filterProfession(str){
+    str.forEach(i => {
+        const filteredCandidates = candidateList.filter(([key, candidate]) => {
+            console.log(key)
+            console.log(candidate)
+            return candidate.description.toLowerCase().includes(i.toLowerCase())
+        })
+        resultsArray = resultsArray.concat(filteredCandidates);
+    });
+}
+
 
 
 
 searchBar.addEventListener('input', (e) => {
     resultsArray = [];
     let searchString = e.target.value;
-
-    function filterProfession(str){
-        str.forEach(i => {
-            const filteredCandidates = candidateList.filter(candidate => {
-                return  candidate.profession.toLowerCase().includes(i.toLowerCase()) ||
-                        candidate.profession.toLowerCase().includes(i.toLowerCase())
-            })
-            resultsArray = resultsArray.concat(filteredCandidates);
-        });
-    }
 
     function filterSkills(str){
         let competencesSearchTerms = [];
@@ -164,9 +179,10 @@ searchBar.addEventListener('input', (e) => {
 
         let strippedInput = searchString.replace(/\s?,\s/g, ',').split(",")
 
-        // filterProfession(strippedInput);
+        filterProfession(strippedInput);
         filterName(strippedInput);
         // filterSkills(strippedInput);
+        filterCity(strippedInput);
     }
 
     console.log(Array.from(new Set(resultsArray)));
