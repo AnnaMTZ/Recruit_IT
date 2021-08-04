@@ -2,38 +2,37 @@ var list = [];
 var input = document.getElementById("to-do-input");
 var todoList = document.getElementById("to-do-list-li");
 var button = document.getElementById("btn-add-todo");
+let toDoListData;
 
 const fetchToDos = async () => {
     const res = await fetch('https://cv-backend.ikbendirk.nl/todos')
         .then(res => res.json())
         .then(json => json.data)
 
-    displayToDos(Object.entries(res));
-    console.log(Object.entries(res));
+        toDoListData = Object.entries(res);
+        displayToDos(toDoListData);
+        console.log(toDoListData);
 }
-
-fetchToDos();
 
 function displayToDos(toDos) {
     const htmlString = toDos.map(([key, toDoInfo]) => {
         console.log(toDoInfo);
         return `
-        <li> ${toDoInfo.taskName}</li>
+            <li> 
+                <button class="color_btn urgent colorBtn" onclick="showColor(this)" id="btnUrgent"><i class="fas fa-exclamation"></i></button>
+                ${toDoInfo.taskName} 
+                <button class="deleteBtn" onclick="deleteTask()";><i class="fas fa-trash"></i></button>
+            </li>
         `;
     }).join('');
     document.getElementById("to-do-list-li").innerHTML = htmlString;
 }
 
-const displayToDo = (todos) => {
-    const htmlString = todos.map((todo, index) => {
-        return `<li> ${todo}<button onclick="deleteTask(${index})";><i class="fas fa-trash"></i></button></li>`;
-    }).join('');
-    todoList.innerHTML = htmlString;
-}
-
-button.addEventListener("click", function () {
+button.addEventListener("click", function(){
     list.push(input.value);
-    userToDo(list);
+    displayToDo(list);
+    input.value = '';
+    button.classList.add("disabled");
 })
 
 input.addEventListener("keyup", function () {
@@ -45,9 +44,15 @@ input.addEventListener("keyup", function () {
 })
 
 function deleteTask(i) {
+    console.log(toDoListData)
     list.splice(i, 1)
-    displayToDo(list);
+    displayToDos(toDoListData)
 }
 
-// const pendingNumb = document.querySelector(".pending")
-// pendingNumb.textContent = htmlString.length;
+function showColor(button) {
+    const changeColor = button.parentElement;
+    changeColor.classList.toggle("toggleClass");
+    button.classList.toggle("toggleClass");
+}
+
+fetchToDos();

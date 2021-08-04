@@ -106,14 +106,24 @@ main form fieldset#name-and-photo div.name-and-role input:focus {
     outline: none;
 }
 
-main form fieldset#name-and-photo div.name-and-role input.candidate-name {
+main form fieldset#name-and-photo div.name-and-role input.candidate-first-name {
     font-weight: bold;
 }
 
-main form fieldset#name-and-photo div.name-and-role input.candidate-name::placeholder {
+main form fieldset#name-and-photo div.name-and-role input.candidate-first-name::placeholder {
     font-weight: normal;
     font-size: 24px;
 }
+
+main form fieldset#name-and-photo div.name-and-role input.candidate-last-name{
+    font-weight: bold;
+}
+
+main form fieldset#name-and-photo div.name-and-role input.candidate-last-name::placeholder {
+    font-weight: normal;
+    font-size: 24px;
+}
+
 
 main form fieldset#name-and-photo div.name-and-role input.candidate-role {
     font-size: 18px;
@@ -354,6 +364,27 @@ main form fieldset#personal-data div.personal-data-field label {
 
 section#save-candidate {
     margin-top: 20px;
+    display:flex;
+    align-items: center;
+}
+
+section#save-candidate button{
+    flex-basis:180px;
+    max-width:180px;
+    margin-right:20px;
+}
+
+section#save-candidate p.success {
+    flex-basis: calc(100% - 200px);
+    font-weight:500;
+}
+
+section#save-candidate p.success {
+    color:green;
+}
+
+section#save-candidate p.no-success{
+    color:red;
 }
 
 section#save-candidate button i,
