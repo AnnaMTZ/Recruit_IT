@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-const saveCandidateBtn = document.getElementById('saveCandidateBtn');
-
-const addCandidate = (e) => {
-  e.preventDefault();
-    fetch('https://cv-backend.ikbendirk.nl/cv', {
-        method: 'POST', 
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify( {
-          "description": "godfather",
-          "hobbies": "mafia",
-          "references": "sicily"
-        })
-          
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-}
-
-
-saveCandidateBtn.addEventListener('click', addCandidate)
-=======
 let apiobj = {
     "description": "A pretty good developer",
     "hobbies": "Eating shoe strings",
@@ -194,4 +165,3 @@ if(candidateID){
     form.saveButton.innerHTML = "<i class='fas fa-save'></i>Add Candidate"
 }
 
->>>>>>> ea63f43227fffbf90bc94cd8f73c396fc2b0fc1f
