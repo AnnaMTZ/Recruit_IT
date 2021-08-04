@@ -106,11 +106,20 @@ main form fieldset#name-and-photo div.name-and-role input:focus {
     outline: none;
 }
 
-main form fieldset#name-and-photo div.name-and-role input.candidate-name {
+main form fieldset#name-and-photo div.name-and-role input.candidate-first-name {
     font-weight: bold;
 }
 
-main form fieldset#name-and-photo div.name-and-role input.candidate-name::placeholder {
+main form fieldset#name-and-photo div.name-and-role input.candidate-first-name::placeholder {
+    font-weight: normal;
+    font-size: 24px;
+}
+
+main form fieldset#name-and-photo div.name-and-role input.candidate-last-name {
+    font-weight: bold;
+}
+
+main form fieldset#name-and-photo div.name-and-role input.candidate-last-name::placeholder {
     font-weight: normal;
     font-size: 24px;
 }

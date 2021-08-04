@@ -1,50 +1,62 @@
 const competencesList = ["HTML", "CSS", "JavaScript", "Nodejs", "GraphQL"];
-const candidateList = [
-    {
-        name: "Redmar",
-        lastName: "Woest",
-        profession: "Front end developer",
-        skills: ["HTML", "CSS", "JavaScript", "Nodejs"],
-        lastUpdated: "13-05-2020",
-        outdated: true
-    },
+// const candidateList = [
+//     {
+//         name: "Redmar",
+//         lastName: "Woest",
+//         profession: "Front end developer",
+//         skills: ["HTML", "CSS", "JavaScript", "Nodejs"],
+//         lastUpdated: "13-05-2020",
+//         outdated: true
+//     },
 
-    {
-        name: "Anna",
-        lastName: "Mykhailenko",
-        profession: "Lead front end developer",
-        skills: ["CSS", "JavaScript", "Nodejs"],
-        lastUpdated: "13-05-2020",
-        outdated: false
-    },
-    {
-        name: "Ken",
-        lastName: "Cheung",
-        profession: "Data scientist",
-        skills: ["HTML", "CSS", "JavaScript"],
-        lastUpdated: "13-05-2020",
-        outdated: false
-    },
-    {
-        name: "Firenzo",
-        lastName: "Jorden",
-        profession: "Back end developer",
-        skills: ["HTML", "JavaScript", "Nodejs", "GraphQL"],
-        lastUpdated: "13-05-2020",
-        outdated: true
-    }
-]
+//     {
+//         name: "Anna",
+//         lastName: "Mykhailenko",
+//         profession: "Lead front end developer",
+//         skills: ["CSS", "JavaScript", "Nodejs"],
+//         lastUpdated: "13-05-2020",
+//         outdated: false
+//     },
+//     {
+//         name: "Ken",
+//         lastName: "Cheung",
+//         profession: "Data scientist",
+//         skills: ["HTML", "CSS", "JavaScript"],
+//         lastUpdated: "13-05-2020",
+//         outdated: false
+//     },
+//     {
+//         name: "Firenzo",
+//         lastName: "Jorden",
+//         profession: "Back end developer",
+//         skills: ["HTML", "JavaScript", "Nodejs", "GraphQL"],
+//         lastUpdated: "13-05-2020",
+//         outdated: true
+//     }
+// ]
 
-const displayCandidates = (candidates) => {
-    const htmlString = candidates.map((candidate) => {
+const fetchCandidates = async () => {
+    const res = await fetch('https://cv-backend.ikbendirk.nl/cvs')
+        .then(res => res.json())
+        .then(json => json.data)
+
+    displayCandidates(Object.entries(res));
+    // console.log(res);
+    // console.log(Object.entries(res));
+}
+
+
+function displayCandidates (candidates)  {
+    const htmlString = candidates.map(([key, candidateInfo]) => {
         return `
             <li>
                 <div class="candidate-picture">
                     <img src="static/img/placeholder-image.png" alt="profile picture">
                 </div>
                 <div class="candidate-information">
-                    <h3>${candidate.name} ${candidate.lastName}</h3>
-                    <p class="role">${candidate.profession}</p>
+                
+                    <h3>${key} ${key}</h3>
+                    <p class="role">${key}</p>
                     <a href="#" class="button">View candidate <i class="fas fa-chevron-right"></i></a>
                 </div>
             </li>
@@ -56,6 +68,8 @@ const displayCandidates = (candidates) => {
 
 const searchBar = document.getElementById("searchCandidates");
 let resultsArray = [];
+
+
 
 searchBar.addEventListener('input', (e) => {
     resultsArray = [];
@@ -135,14 +149,14 @@ searchBar.addEventListener('input', (e) => {
         getOnlyOutdatedCvs(e.target.value);
     } else {
         searchBar.classList.remove("specialCommand")
-        checkProfession(searchString.replace(/\s?,\s/g, ',').split(","));
+        // checkProfession(searchString.replace(/\s?,\s/g, ',').split(","));
         checkName(searchString.replace(/\s?,\s/g, ',').split(","));
-        checkSkills(searchString.replace(/\s?,\s/g, ',').split(","));
+        // checkSkills(searchString.replace(/\s?,\s/g, ',').split(","));
     }
 
     console.log(Array.from(new Set(resultsArray)));
     displayCandidates(Array.from(new Set(resultsArray)));
-})
+});
 
 
 document.getElementById("link-to-outdated-cvs").addEventListener("click", ()=>{
@@ -163,4 +177,5 @@ function showOutdatedcvs(){
     displayCandidates(Array.from(new Set(resultsArray)));
 }
 
-displayCandidates(candidateList);
+fetchCandidates();
+
