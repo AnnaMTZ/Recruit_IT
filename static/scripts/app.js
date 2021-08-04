@@ -1,51 +1,76 @@
 const competencesList = ["HTML", "CSS", "JavaScript", "Nodejs", "GraphQL"];
-const candidateList = [
-    {
-        name: "Redmar",
-        lastName: "Woest",
-        profession: "Front end developer",
-        skills: ["HTML", "CSS", "JavaScript", "Nodejs"],
-        lastUpdated: "13-05-2020",
-        outdated: true
-    },
+// const candidateList = [
+//     {
+//         name: "Redmar",
+//         lastName: "Woest",
+//         profession: "Front end developer",
+//         skills: ["HTML", "CSS", "JavaScript", "Nodejs"],
+//         lastUpdated: "13-05-2020",
+//         outdated: true
+//     },
 
-    {
-        name: "Anna",
-        lastName: "Mykhailenko",
-        profession: "Lead front end developer",
-        skills: ["CSS", "JavaScript", "Nodejs"],
-        lastUpdated: "13-05-2020",
-        outdated: false
-    },
-    {
-        name: "Ken",
-        lastName: "Cheung",
-        profession: "Data scientist",
-        skills: ["HTML", "CSS", "JavaScript"],
-        lastUpdated: "13-05-2020",
-        outdated: false
-    },
-    {
-        name: "Firenzo",
-        lastName: "Jorden",
-        profession: "Back end developer",
-        skills: ["HTML", "JavaScript", "Nodejs", "GraphQL"],
-        lastUpdated: "13-05-2020",
-        outdated: true
-    }
-]
+//     {
+//         name: "Anna",
+//         lastName: "Mykhailenko",
+//         profession: "Lead front end developer",
+//         skills: ["CSS", "JavaScript", "Nodejs"],
+//         lastUpdated: "13-05-2020",
+//         outdated: false
+//     },
+//     {
+//         name: "Ken",
+//         lastName: "Cheung",
+//         profession: "Data scientist",
+//         skills: ["HTML", "CSS", "JavaScript"],
+//         lastUpdated: "13-05-2020",
+//         outdated: false
+//     },
+//     {
+//         name: "Firenzo",
+//         lastName: "Jorden",
+//         profession: "Back end developer",
+//         skills: ["HTML", "JavaScript", "Nodejs", "GraphQL"],
+//         lastUpdated: "13-05-2020",
+//         outdated: true
+//     }
+// ]
 
-const displayCandidates = (candidates) => {
-    const htmlString = candidates.map((candidate) => {
+let candidateList;
+
+const fetchCandidates = async () => {
+    const res = await fetch('https://cv-backend.ikbendirk.nl/cvs')
+        .then(res => res.json())
+        .then(json => json.data)
+
+    candidateList = Object.entries(res);
+    displayCandidates(candidateList);
+    console.log(candidateList);
+    
+}
+
+const hasFirstName = (candidateInfo) => (candidateInfo.hasOwnProperty("person") && candidateInfo.person.hasOwnProperty("firstName"))
+const hasLastName = (candidateInfo) => (candidateInfo.hasOwnProperty("person") && candidateInfo.person.hasOwnProperty("lastName"))
+
+const insertFirstName = (candidateInfo) => hasFirstName(candidateInfo) ?  candidateInfo.person.firstName : "Kees"
+const insertLastName = (candidateInfo) => hasLastName(candidateInfo) ?  candidateInfo.person.lastName : "van Straten"
+
+const hasCity = (candidateInfo) => (candidateInfo.hasOwnProperty("person") && candidateInfo.person.address.hasOwnProperty("city"))
+
+function displayCandidates (candidates)  {
+    const htmlString = candidates.map(([key, candidateInfo]) => {
         return `
             <li>
                 <div class="candidate-picture">
                     <img src="static/img/placeholder-image.png" alt="profile picture">
                 </div>
+
                 <div class="candidate-information">
-                    <h3>${candidate.name} ${candidate.lastName}</h3>
-                    <p class="role">${candidate.profession}</p>
-                    <a href="#" class="button">View candidate <i class="fas fa-chevron-right"></i></a>
+                    <h3>
+                        ${insertFirstName(candidateInfo)}
+                        ${insertLastName(candidateInfo)}
+                    </h3>
+                    <p class="role">${candidateInfo.description}</p>
+                    <a href="cv-page.html#${key}" class="button">View candidate <i class="fas fa-chevron-right"></i></a>
                 </div>
             </li>
         `;
@@ -57,43 +82,59 @@ const displayCandidates = (candidates) => {
 const searchBar = document.getElementById("searchCandidates");
 let resultsArray = [];
 
+function filterName(str){
+    str.forEach(i => {
+
+        const filteredCandidates = candidateList.filter(([key,candidate]) => {
+            console.log(key)
+            if(hasFirstName(candidate) && hasLastName(candidate)){
+                console.log(candidate.person.firstName.toLowerCase().concat(" ", candidate.person.lastName.toLowerCase()));
+                //Return alle matches op basis van "Voornaam + Achternaam ongeacht of er een spatie wordt vergeten of niet"
+                return  candidate.person.firstName.toLowerCase().concat(" ", candidate.person.lastName.toLowerCase()).includes(i.toLowerCase()) ||
+                        candidate.person.firstName.toLowerCase().concat(candidate.person.lastName.toLowerCase()).includes(i.toLowerCase()) ||
+                        candidate.person.lastName.toLowerCase().concat(" ", candidate.person.firstName.toLowerCase()).includes(i.toLowerCase()) ||
+                        candidate.person.lastName.toLowerCase().concat(candidate.person.firstName.toLowerCase()).includes(i.toLowerCase())
+            } else {
+                return false;
+            }
+        })
+        resultsArray = resultsArray.concat(filteredCandidates);
+    });
+}
+
+function filterCity(str){
+    str.forEach(i => {
+        const filteredCandidates = candidateList.filter(([key,candidate]) => {
+            console.log(key)
+            if(hasCity(candidate)){
+                return  candidate.person.address.city.toLowerCase().includes(i.toLowerCase())
+            } else {
+                return false;
+            }
+        })
+        resultsArray = resultsArray.concat(filteredCandidates);
+    });
+}
+
+function filterProfession(str){
+    str.forEach(i => {
+        const filteredCandidates = candidateList.filter(([key, candidate]) => {
+            console.log(key)
+            console.log(candidate)
+            return candidate.description.toLowerCase().includes(i.toLowerCase())
+        })
+        resultsArray = resultsArray.concat(filteredCandidates);
+    });
+}
+
+
+
+
 searchBar.addEventListener('input', (e) => {
     resultsArray = [];
     let searchString = e.target.value;
-    
-    function getOnlyOutdatedCvs(str){
-        resultsArray = [];
-        const filteredCandidates = candidateList.filter(candidate => {
-            return  candidate.outdated === true
-        })
-        console.log(filteredCandidates)
-        resultsArray = resultsArray.concat(filteredCandidates);
-    }
 
-    function checkProfession(str){
-        str.forEach(i => {
-            const filteredCandidates = candidateList.filter(candidate => {
-                return  candidate.profession.toLowerCase().includes(i.toLowerCase()) ||
-                        candidate.profession.toLowerCase().includes(i.toLowerCase())
-            })
-            resultsArray = resultsArray.concat(filteredCandidates);
-        });
-    }
-
-    function checkName(str){
-        str.forEach(i => {
-            const filteredCandidates = candidateList.filter(candidate => {
-                console.log(candidate.name.toLowerCase().concat(" ", candidate.lastName.toLowerCase()));
-                return  candidate.name.toLowerCase().concat(" ", candidate.lastName.toLowerCase()).includes(i.toLowerCase()) ||
-                        candidate.name.toLowerCase().concat(candidate.lastName.toLowerCase()).includes(i.toLowerCase()) ||
-                        candidate.lastName.toLowerCase().concat(" ", candidate.name.toLowerCase()).includes(i.toLowerCase()) ||
-                        candidate.lastName.toLowerCase().concat(candidate.name.toLowerCase()).includes(i.toLowerCase())
-            })
-            resultsArray = resultsArray.concat(filteredCandidates);
-        });
-    }
-
-    function checkSkills(str){
+    function filterSkills(str){
         let competencesSearchTerms = [];
         const competencesListLowerCase = competencesList.map(competence => competence.toLowerCase());
         str.forEach(i => {
@@ -132,12 +173,16 @@ searchBar.addEventListener('input', (e) => {
 
     if(searchString ==="!OUTDATED"){
         searchBar.classList.add("specialCommand")
-        getOnlyOutdatedCvs(e.target.value);
+        // showOutdatedcvs();
     } else {
         searchBar.classList.remove("specialCommand")
-        checkProfession(searchString.replace(/\s?,\s/g, ',').split(","));
-        checkName(searchString.replace(/\s?,\s/g, ',').split(","));
-        checkSkills(searchString.replace(/\s?,\s/g, ',').split(","));
+
+        let strippedInput = searchString.replace(/\s?,\s/g, ',').split(",")
+
+        filterProfession(strippedInput);
+        filterName(strippedInput);
+        // filterSkills(strippedInput);
+        filterCity(strippedInput);
     }
 
     console.log(Array.from(new Set(resultsArray)));
@@ -146,10 +191,9 @@ searchBar.addEventListener('input', (e) => {
 
 
 document.getElementById("link-to-outdated-cvs").addEventListener("click", ()=>{
-    showOutdatedcvs()
+    showOutdatedcvs();
+    displayCandidates(Array.from(new Set(resultsArray)));
 })
-
-// is niet netjes, I know
 
 function showOutdatedcvs(){
     resultsArray =[]
@@ -160,7 +204,6 @@ function showOutdatedcvs(){
     })
     console.log(filteredCandidates)
     resultsArray = resultsArray.concat(filteredCandidates);
-    displayCandidates(Array.from(new Set(resultsArray)));
 }
 
-displayCandidates(candidateList);
+fetchCandidates();
