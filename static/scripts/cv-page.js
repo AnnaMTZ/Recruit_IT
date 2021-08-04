@@ -30,6 +30,7 @@ let form = {
     firstName: document.getElementById("candidate-first-name"),
     lastName: document.getElementById("candidate-last-name"),
     profession: document.getElementById("candidate-profession"),
+    city: document.getElementById("located"),
 
     saveButton: document.getElementById("saveCandidateButton")
 }
@@ -40,7 +41,7 @@ let updatedCV = {
     "references": "A reference string"
 }
 
-let updatedData = {
+let newData = {
     "firstName": "Jan",
     "lastName": "de Groot",
     "age": 34,
@@ -62,30 +63,13 @@ let candidate;
 
 form.saveButton.addEventListener('click', (e)=>{
     e.preventDefault();
-    // fetch('https://cv-backend.ikbendirk.nl/cv', {
-    //     method: 'POST', // or 'PUT'
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(apiobj),
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     console.log('Success:', data);
-    // })
-    // .catch((error) => {
-    //     console.error('Error:', error);
-    // });
 
-    
     updateCandidate();
     updateCV();
 
     fetch(`https://cv-backend.ikbendirk.nl/cv/`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json',},
         body: JSON.stringify(updatedCV),
     })
     .then(response => response.json())
@@ -99,10 +83,8 @@ form.saveButton.addEventListener('click', (e)=>{
 
     fetch(`https://cv-backend.ikbendirk.nl/cv/${candidateID}/person`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedData),
+        headers: {'Content-Type': 'application/json',},
+        body: JSON.stringify(newData),
     })
     .then(response => response.json())
     .then(data => {
@@ -126,19 +108,24 @@ form.saveButton.addEventListener('click', (e)=>{
 })
 
 const updateCandidate = () => {
-    updatedData.firstName = form.firstName.value
-    updatedData.lastName = form.lastName.value
-    updatedData.description = form.profession.value
+    newData.firstName = form.firstName.value
+    newData.lastName = form.lastName.value
+    newData.description = form.profession.value
+    newData.address.city = form.city.value
 }
 
 const updateCV = () => {
     updatedCV.description = form.profession.value
-    if(candidateID){
-        updatedCV.cvId = candidateID; 
-    }
-
+    if(candidateID){ updatedCV.cvId = candidateID; }
     console.log(updatedCV)
 }
+
+const displayContent = (candidate) => {
+    form.firstName.value = candidate.person.firstName
+    form.lastName.value = candidate.person.lastName
+    form.profession.value = candidate.description
+    form.city.value = candidate.person.address.city
+} 
 
 const fetchCandidate = async () => {
     const res = await fetch(`https://cv-backend.ikbendirk.nl/cv/${candidateID}`)
@@ -150,11 +137,6 @@ const fetchCandidate = async () => {
     console.log(candidate);
 }
 
-const displayContent = (candidate) => {
-    form.firstName.value = candidate.person.firstName
-    form.lastName.value = candidate.person.lastName
-    form.profession.value = candidate.description
-} 
 
 if(candidateID){
     console.log(candidateID)
