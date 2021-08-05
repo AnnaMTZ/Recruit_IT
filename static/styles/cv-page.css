@@ -111,6 +111,18 @@ main form fieldset#name-and-photo div.name-and-role input.candidate-first-name {
 }
 
 main form fieldset#name-and-photo div.name-and-role input.candidate-first-name::placeholder {
+<<<<<<< HEAD
+    font-weight: normal;
+    font-size: 24px;
+}
+
+main form fieldset#name-and-photo div.name-and-role input.candidate-last-name {
+    font-weight: bold;
+}
+
+main form fieldset#name-and-photo div.name-and-role input.candidate-last-name::placeholder {
+=======
+>>>>>>> ea63f43227fffbf90bc94cd8f73c396fc2b0fc1f
     font-weight: normal;
     font-size: 24px;
 }
