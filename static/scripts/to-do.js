@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 var list = [];
 var input = document.getElementById("to-do-input");
 var todoList = document.getElementById("to-do-list-li");
@@ -17,14 +15,15 @@ const fetchToDos = async () => {
         console.log(toDoListData);
 }
 
+//This function get's todo's from the database
 function displayToDos(toDos) {
     const htmlString = toDos.map(([key, toDoInfo]) => {
         console.log(toDoInfo);
         return `
-            <li> 
+            <li id="${key}"> 
                 <button class="color_btn urgent colorBtn" onclick="showColor(this)" id="btnUrgent"><i class="fas fa-exclamation"></i></button>
                 ${toDoInfo.taskName} 
-                <button class="deleteBtn" onclick="deleteTask()";><i class="fas fa-trash"></i></button>
+                <button class="deleteBtn" onclick="deleteTask(this)";><i class="fas fa-trash"></i></button>
             </li>
         `;
     }).join('');
@@ -32,13 +31,52 @@ function displayToDos(toDos) {
     pendingTasks.innerHTML = `You have ${toDoListData.length} pending tasks`
 }
 
-button.addEventListener("click", function(){
-    list.push(input.value);
-    displayToDo(list);
-    input.value = '';
+fetchToDos();
+
+let postData = {
+    "taskName": "Een todo 2", 
+    "done": false,
+    "urgent": false
+}
+
+button.addEventListener("click", function(e){
+    e.preventDefault()
     button.classList.add("disabled");
+
+    updatePostData()
+
+    fetch('https://cv-backend.ikbendirk.nl/todo/',{
+    method: 'POST',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(postData),
+
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('success', data); 
+        fetchToDos()
+})
+    .catch((error) => {console.log('there was an error', error)})
 })
 
+const updatePostData = () => {
+    postData.taskName = input.value
+}
+
+
+function deleteTask(element) {
+    console.log(element.parentElement.id)
+    fetch(`https://cv-backend.ikbendirk.nl/todo/${element.parentElement.id}` , {
+    method: 'DELETE',
+    headers: {"Content-Type": "application/json"}
+  })
+    .then(response => { return response.json();}) 
+    .then(data => { 
+        console.log(data)
+        fetchToDos() 
+    })
+}
+  
 input.addEventListener("keyup", function () {
     if (input.value == '') {
         button.classList.add("disabled");
@@ -47,17 +85,9 @@ input.addEventListener("keyup", function () {
     }
 })
 
-function deleteTask(i) {
-    console.log(toDoListData)
-    list.splice(i, 1)
-    displayToDos(toDoListData)
-}
-
 function showColor(button) {
     const changeColor = button.parentElement;
     changeColor.classList.toggle("toggleClass");
     button.classList.toggle("toggleClass");
 }
 
-fetchToDos();
->>>>>>> d1f5700e75c3b3f4185cdd4c29b2fc1f846851cc
