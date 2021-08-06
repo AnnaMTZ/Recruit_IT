@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,21 +10,23 @@
     <link rel="stylesheet" href="static/styles/login.css">
     <script src="https://kit.fontawesome.com/e68b187971.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-
-    
-        <!-- <img class="logo" src="/bullseye.png" alt="logo" > -->
-            <form class="form" id="form">
-                <img src="static/img/recruitit.png" alt="RecruitIT logo">
-                <input type="email" id='username' placeholder="username">
-                <small>message</small>
-                <input type="password" id='password' placeholder="password">
-                <small>message</small>
-                <!-- <button class="button" id="loginBtn">Log in</button> -->
-                <a class="button" href="index.html" id="loginBtn">Log in</a>
-            </form>
-
-
-<script src="script/login.js"></script>
+    <!-- <img class="logo" src="/bullseye.png" alt="logo" > -->
+    <form class="form" id="form">
+        <img src="static/img/recruitit.png" alt="RecruitIT logo">
+        <input type="email" id='username' placeholder="email">
+        <small>message</small>
+        <input type="password" id='password' placeholder="password">
+        <small>message</small>
+        <!-- <button class="button" id="loginBtn">Log in</button> -->
+        <a class="button" id="loginBtn">Log in</a>
+        <a href="">
+            <p class="forgotPassword">Forgot password?</p>
+        </a>
+        <p id="loginError"></p>
+    </form>
 </body>
+<script src="static/scripts/login.js"></script>
+
 </html>
