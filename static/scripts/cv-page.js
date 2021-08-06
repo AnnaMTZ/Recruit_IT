@@ -147,3 +147,35 @@ if(candidateID){
     form.saveButton.innerHTML = "<i class='fas fa-save'></i>Add Candidate"
 }
 
+//// Add competence
+
+const addCompetenceBtn = document.getElementById('add_competence_btn');
+const competences = document.getElementById('competences-list-choice');
+
+let competencesArr = ["HTML", "CSS", "JavaScript", "Nodejs", "GraphQL"];
+
+const addCompetence = (e) => {
+    e.preventDefault();
+
+competencesArr.push(competences.value);
+console.log(competencesArr);
+competences.value = '';
+displayCompetences(competencesArr);
+
+}
+
+function displayCompetences(competences) {
+    const htmlString = competences.map(competence => {
+        console.log(competence);
+        return `
+        <option value="${competence}">
+        `;
+    }).join('');
+    document.getElementById("competences-list-dropdown").innerHTML = htmlString;
+}
+
+displayCompetences(competencesArr);
+
+addCompetenceBtn.addEventListener('click', addCompetence)
+
+
