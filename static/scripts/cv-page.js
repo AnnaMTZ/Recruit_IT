@@ -120,6 +120,9 @@ const updateCV = () => {
     console.log(updatedCV)
 }
 
+
+/*Functions for getting Candidate info*/ 
+
 const displayContent = (candidate) => {
     form.firstName.value = candidate.person.firstName
     form.lastName.value = candidate.person.lastName
@@ -137,6 +140,8 @@ const fetchCandidate = async () => {
     console.log(candidate);
 }
 
+
+/*Fetch candidate info only when editing existing candidate*/ 
 
 if(candidateID){
     console.log(candidateID)

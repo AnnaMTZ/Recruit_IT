@@ -56,7 +56,7 @@
 
             <div class="cv-status">
                 <i class="fas fa-exclamation-circle"></i>
-                <p><span id="link-to-outdated-cvs" class="highlight">2 out of 500 CV's</span> are not up-to-date.</p>
+                <p><span id="link-to-outdated-cvs" class="highlight"></span><span id="cv-up-to-date-status">Loading CV Data . . .</span></p>
             </div>
 
             <div class="search-area">
@@ -70,17 +70,21 @@
                         <fieldset class="work-abroad">
                             <legend>Willingness to work abroad:</legend>
                             <div class="work-benelux">
-                                <input type="checkbox" name="work-benelux" id="work-benelux"><label
-                                    for="work-benelux">Benelux</label>
+                                <input type="radio" value="Netherlands" name="work-abroad" id="work-netherlands">
+                                <label for="work-netherlands">Netherlands</label>
+                            </div>
+                            <div class="work-benelux">
+                                <input type="radio" value="Benelux" name="work-abroad" id="work-benelux">
+                                <label for="work-benelux">Benelux</label>
                             </div>
                             <div class="work-europe">
-                                <input type="checkbox" name="work-europe" id="work-europe"><label
-                                    for="work-europe">Europe</label>
+                                <input type="radio" value="Europe" name="work-abroad" id="work-europe">
+                                <label for="work-europe">Europe</label>
                             </div>
 
                             <div class="work-global">
-                                <input type="checkbox" name="work-global" id="work-global"><label
-                                    for="work-global">Global</label>
+                                <input type="radio" value="Global" name="work-abroad" id="work-global">
+                                <label for="work-global">Global</label>
                             </div>
                         </fieldset>
                     </form>
@@ -88,9 +92,7 @@
             </div>
 
             <div class="results">
-                <ul id="results">
-
-                </ul>
+                <ul id="results"></ul>
             </div>
         </section>
     </div>

@@ -1,3 +1,6 @@
+const outDatedCvLink = document.getElementById("link-to-outdated-cvs");
+const outDatedCvText = document.getElementById("cv-up-to-date-status");
+
 const competencesList = ["HTML", "CSS", "JavaScript", "Nodejs", "GraphQL"];
 // const candidateList = [
 //     {
@@ -44,6 +47,7 @@ const fetchCandidates = async () => {
 
     candidateList = Object.entries(res);
     displayCandidates(candidateList);
+    showCvNumbers();
     console.log(candidateList);
     
 }
@@ -127,9 +131,6 @@ function filterProfession(str){
     });
 }
 
-
-
-
 searchBar.addEventListener('input', (e) => {
     resultsArray = [];
     let searchString = e.target.value;
@@ -190,7 +191,7 @@ searchBar.addEventListener('input', (e) => {
 })
 
 
-document.getElementById("link-to-outdated-cvs").addEventListener("click", ()=>{
+outDatedCvLink.addEventListener("click", ()=>{
     showOutdatedcvs();
     displayCandidates(Array.from(new Set(resultsArray)));
 })
@@ -206,4 +207,17 @@ function showOutdatedcvs(){
     resultsArray = resultsArray.concat(filteredCandidates);
 }
 
+function showCvNumbers(){
+    let numberofoutdatedcvs = 0;
+
+    if(numberofoutdatedcvs <= 0){
+        outDatedCvLink.innerHTML = ``
+        outDatedCvText.innerHTML = `All ${candidateList.length} CV's are up to date`
+    }
+
+    if(numberofoutdatedcvs > 0){
+        outDatedCvLink.innerHTML = `${numberofoutdatedcvs} out of ${candidateList.length}`
+        outDatedCvText.innerHTML = " CV's are not up to date"
+    }
+}
 fetchCandidates();

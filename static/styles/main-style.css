@@ -178,7 +178,7 @@ input[type="password"]::placeholder {
     font-size: 14px;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"], input[type="radio"] {
     height: 25px;
     width: 25px;
 }
