@@ -1,64 +1,76 @@
-const userForm = document.getElementById('form');
+const loginButton = document.getElementById('loginBtn');
 const userName = document.getElementById('username');
 const passWord = document.getElementById('password');
 
-
-function showError(input, message) { 
-      input.classList.add('error');
-      const small = userForm.querySelector('small'); 
- small.classList.add('error');
-    small.innerText = message;
+function showError(input, message) {
+  input.classList.add('error');
+  const small = userForm.querySelector('small');
+  small.classList.add('error');
+  small.innerText = message;
 }
-
 
 function showSuccess(input) {
-    input.classList.add('success');
-    small.classList.remove('error');
-  
-}
-//Check email is valid
+  input.classList.add('success');
+  small.classList.remove('error');
 
+}
+
+//Check email is valid
 function isValidEmail(input) {
-const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
- if (re.test(input.value.trim())) 
- { showSuccess(input); } 
- else 
- { showError(input, message);
-} 
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (re.test(input.value.trim())) { showSuccess(input); }
+  else {
+    showError(input, message);
+  }
 }
 
 /// Event Listeners
+loginButton.addEventListener('click', login);
 
-userForm.addEventListener('submit', function(e) {
-     e.preventDefault();
-  if (userName.value === '') 
-  { 
-      showError(userName, 'Email is reguired!') 
-  } 
-  else if (!isValidEmail(userName)) 
+const users = [
   {
-    showError(userName, 'Email is not correct!') 
-  } 
-  else if (isValidEmail(userName)) {
-     showSuccess(userName);
+    email: 'ken@capgemini.com',
+    password: 'ken123',
+    name: 'ken',
+    admin: true
+  },
+  {
+    email: 'anna@capgemini.com',
+    password: 'anna123',
+    name: 'anna',
+    admin: true
+  },
+  {
+    email: 'firenzo@capgemini.com',
+    password: 'firenzo123',
+    name: 'firenzo',
+    admin: false
+  },
+  {
+    email: 'redmar@capgemini.com',
+    password: 'redmar123',
+    name: 'redmar',
+    admin: false
   }
-  
-  if (passWord.value === '') 
-  { showError(passWord, 'Password is reguired');
- } 
-  else { showSuccess(passWord);}
-} 
-);
+];
 
+function login() {
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
 
+  users.forEach(user => {
+    if (user.email === username && user.password === password) {
+      window.location = "./index.html";
+    } else {
+      document.getElementById("loginError").innerHTML = "Wrong login credentials"
+    }
+  }
+  );
+}
 
-
-
-// if (email.value === '') { showError(email, 'Email is reguired');  } 
-//  else if (!isValidEmail(email.value)) {  showError(email, 'Email is not valid');  } 
-//     else {  showSuccess(email);  }
-//  if (password.value === '') { showError(password, 'Password is reguired'); } 
-// else { showSuccess(password); }
-//  if (password2.value === '') { showError(password2, 'Confirm your password'); } 
-// else { showSuccess(password2); } 
-// });
+  // console.log(username);
+  // var password = document.getElementById("password").value;
+  // if (username === users[0].email && password === users[0].password) {
+  //   console.log(username);
+  //   window.location = "./index.html";
+  // }

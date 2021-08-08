@@ -90,4 +90,3 @@ function showColor(button) {
     changeColor.classList.toggle("toggleClass");
     button.classList.toggle("toggleClass");
 }
-
