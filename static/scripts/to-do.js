@@ -85,6 +85,14 @@ input.addEventListener("keyup", function () {
     }
 })
 
+input.addEventListener("keyup", function () {
+    if (toDoListData.length == 10) {
+        button.classList.add("disabled");
+    } else {
+        button.classList.remove("disabled");
+    }
+})
+
 function showColor(button) {
     const changeColor = button.parentElement;
     changeColor.classList.toggle("toggleClass");
