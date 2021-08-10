@@ -28,6 +28,18 @@ header h1 {
     }
 }
 
+@media only screen and (min-width: 800px) {
+    div.content {
+        flex-wrap: nowrap;
+    }
+    div.content section {
+        flex-basis: 50%;
+    }
+    nav {
+        display: block;
+    }
+}
+
 main {
     padding: 20px 20px;
     max-width: 1000px;
@@ -111,7 +123,6 @@ main form fieldset#name-and-photo div.name-and-role input.candidate-first-name {
 }
 
 main form fieldset#name-and-photo div.name-and-role input.candidate-first-name::placeholder {
-<<<<<<< HEAD
     font-weight: normal;
     font-size: 24px;
 }
@@ -121,8 +132,6 @@ main form fieldset#name-and-photo div.name-and-role input.candidate-last-name {
 }
 
 main form fieldset#name-and-photo div.name-and-role input.candidate-last-name::placeholder {
-=======
->>>>>>> ea63f43227fffbf90bc94cd8f73c396fc2b0fc1f
     font-weight: normal;
     font-size: 24px;
 }
@@ -216,7 +225,7 @@ main form fieldset#work-abroad>div:not(:last-of-type) {
     margin-bottom: 10px;
 }
 
-main form fieldset#work-abroad>div input[type="checkbox"] {
+main form fieldset#work-abroad>div input[type="radio"] {
     margin-right: 7px;
 }
 
@@ -369,7 +378,7 @@ main form fieldset#personal-data div.personal-data-field label {
 /* --------------------------------------------------------------------- */
 
 
-/* SAVE CANDIDATE SECTION */
+/* SAVE CANDIDATE SECTION  & DELETE CANDIDATE */
 
 
 /* --------------------------------------------------------------------- */
@@ -404,23 +413,6 @@ section#add-candidate button i {
     margin-right: 5px;
 }
 
-
-/* --------------------------------------------------------------------- */
-
-
-/* ADD CANDIDATE SECTION */
-
-
-/* --------------------------------------------------------------------- */
-
-#add-candidate button {
-    margin-top: 2rem;
-    background-color: #618b98;
-    font-weight: bolder;
-}
-
-#add-candidate button:hover {
-    margin-top: 2rem;
-    background-color: #000;
-    font-weight: bolder;
+section#save-candidate button.hide{
+    display:none;
 }
