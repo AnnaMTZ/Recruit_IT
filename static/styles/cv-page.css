@@ -301,7 +301,7 @@ main form fieldset#competences div.add-competence label {
     flex-basis: 100%;
 }
 
-main form fieldset#competences div.add-competence input[type="text"] {
+main form fieldset#competences div.add-competence select {
     margin-bottom: 10px;
     flex-basis: calc(100% - 130px);
     border-radius: 5px 0 0 5px;

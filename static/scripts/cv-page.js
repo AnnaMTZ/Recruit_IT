@@ -22,6 +22,10 @@ let form = {
 
     gender: document.getElementById("gender"),
 
+    addCompetenceButton: document.getElementById('add_competence_btn'),
+    competencesList: document.getElementById("competences-list-dropdown"),
+    selectedCompetencesList: document.querySelector("#selected-competences-list>ul"),
+
     saveButton: document.getElementById("saveCandidateButton"),
     deleteButton: document.getElementById("deleteCandidate"),
 }
@@ -66,6 +70,11 @@ let newData = {
     "driversLicenseExtra": "nothing",
     "gender": "male",
     "willingnessToWorkAbroad": "netherlands"
+}
+
+let newSkill = {
+    "name": "HTML",
+    "description": " "
 }
 
 let candidate;
@@ -134,6 +143,29 @@ const deleteCV = (CvId) => {
     });
 }
 
+const createSkill = (CvId) => {
+    updateSkill(form.competencesList.value);
+    fetch(`https://cv-backend.ikbendirk.nl/cv/${CvId}/skill`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',},
+        body: JSON.stringify(newSkill),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success === true){
+            console.log('Success:', data);
+            fetchCandidate();
+        }
+
+        if(data.success === false){
+            console.log('Success:', data);
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
 form.saveButton.addEventListener('click', (e)=>{
     e.preventDefault();
     updateCVData();
@@ -145,6 +177,12 @@ form.deleteButton.addEventListener('click', (e)=>{
     e.preventDefault();
     deleteCV(candidateID);
 })
+
+/*---------------------------------------------------
+
+//    FUNCTIONS FOR SETTING NEW DATA IN OBJECT
+
+---------------------------------------------------*/
 
 const updatePersonData = () => {
     newData.firstName = form.firstName.value || " ";
@@ -166,6 +204,11 @@ const updateCVData = () => {
         updatedCV.cvId = candidateID;
     }
     console.log(updatedCV)
+}
+
+const updateSkill = (skillname) => {
+    newSkill.name = skillname
+    console.log(newSkill);
 }
 
 /*---------------------------------------------------
@@ -215,6 +258,20 @@ const displayDateOfBirth = (candidate) => {
     form.dateOfBirth.value = `${dateArray[2]}-${dateArray[1]}-${dateArray[0]}` //[2] = year;  [1] = month;  [0] = day;
 }
 
+const displaySkills = (candidate) => {
+    let result = []
+    if(candidate.skills != null || candidate.skills != undefined){
+        Object.entries(candidate.skills).reverse().forEach(([key, value]) => {
+            result.push(value.name)
+        });
+        initializeCompetences(result);
+    }
+
+    if(candidate.skills === null || candidate.skills === undefined){
+        initializeCompetences(result);
+    }
+}
+
 const displayContent = (candidate) => {
     console.log(candidate);
     displayNameAndProfession(candidate);
@@ -227,12 +284,13 @@ const displayContent = (candidate) => {
     displayCountry(candidate);
 
     displayGender(candidate);
-    displayDateOfBirth(candidate)
+    displayDateOfBirth(candidate);
+    displaySkills(candidate);
 } 
 
 /*---------------------------------------------------
 
-//     FUNCTION FOR GETTING CANDIDATE INFO
+//     FUNCTIONS FOR GETTING CANDIDATE INFO
 
 ---------------------------------------------------*/
 
@@ -243,6 +301,7 @@ const fetchCandidate = async () => {
 
     candidate = res;
     displayContent(candidate);
+    displaySkills(candidate);
     console.log(candidate);
 }
 
@@ -265,35 +324,56 @@ if(candidateID){
 
 
 //// Add competence
+let allCompetences = ["","HTML", "CSS", "JavaScript", "Nodejs", "GraphQL", "ReactJS", "VueJS", "Angular"];
+let fakeArray = ["HTML","CSS","JavaScript"];
 
-const addCompetenceBtn = document.getElementById('add_competence_btn');
-const competences = document.getElementById('competences-list-choice');
-
-let competencesArr = ["HTML", "CSS", "JavaScript", "Nodejs", "GraphQL"];
-
-const addCompetence = (e) => {
-    e.preventDefault();
-
-    competencesArr.push(competences.value);
-    console.log(competencesArr);
-    competences.value = '';
-    displayCompetences(competencesArr);
-
+const removeAlreadySelectedCompetences = (competences) => {
+    console.log(competences)
+    competences.forEach((element, index) => {
+        itemToBeRemoved = allCompetences.indexOf(element)
+        if(itemToBeRemoved > -1 ){
+            allCompetences.splice(itemToBeRemoved,1);
+        }
+    });
+    console.log(allCompetences);
 }
 
-function displayCompetences(competences) {
+
+function showCompetencesOptions(competences) {
     const htmlString = competences.map(competence => {
-        console.log(competence);
         return `
-        <option value="${competence}">
+            <option value="${competence}">${competence}</option>
         `;
     }).join('');
     document.getElementById("competences-list-dropdown").innerHTML = htmlString;
 }
 
-displayCompetences(competencesArr);
+function showCompetencesList(competences) {
+    const htmlString = competences.map(competence => {
+        console.log(competence);
+        return `
+            <li id=${competence}>${competence}<i class="fas fa-times" class="deleteCompetence"></i></li>
+        `;
+    }).join('');
+    form.selectedCompetencesList.innerHTML = htmlString;
+}
 
-addCompetenceBtn.addEventListener('click', addCompetence)
+const initializeCompetences = (competences) => {
+    removeAlreadySelectedCompetences(competences);
+    showCompetencesOptions(allCompetences);
+    showCompetencesList(competences);
+}
+
+form.addCompetenceButton.addEventListener('click', (e) =>{
+    e.preventDefault();
+    if(form.competencesList.value !== ""){
+        createSkill(candidateID);
+        // fakeArray.push(form.competencesList.value);
+        // console.log(fakeArray);
+        // form.competencesList.selectedIndex = 0;
+        // initializeCompetences();
+    }
+})
 
 
 /*---------------------------------------------------*/
@@ -318,11 +398,4 @@ links.competences.addEventListener('click', (e) => {
 links.personalData.addEventListener('click', (e) => {
     e.preventDefault();
     sections.personalData.scrollIntoView({behavior:"smooth"})
-})
-
-
-document.getElementById("date-of-birth").addEventListener("input", (e)=>{
-    console.log(e.target.value);
-    date = new Date(e.target.value);
-    console.log(`${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`);
 })
