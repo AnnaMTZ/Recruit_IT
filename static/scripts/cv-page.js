@@ -171,7 +171,6 @@ displayCompetences(competencesArr);
 
 function displayCompetences(competences) {
     const htmlString = competences.map(competence => {
-        console.log(competence);
         return `
         <option value="${competence}">
         `;
