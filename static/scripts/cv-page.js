@@ -1,4 +1,5 @@
 const candidateID = window.location.hash.replace("#", '');
+let allCompetences = ["","HTML", "CSS", "JavaScript", "Nodejs", "GraphQL", "ReactJS", "VueJS", "Angular"];
 console.log(window.location)
 statusText = document.getElementById("statusText");
 
@@ -79,7 +80,9 @@ let newSkill = {
 
 let candidate;
 
-const createCV = () => {
+const createCV = (makeNewSkillAfter) => {
+    updateCVData();
+    updatePersonData();
     fetch(`https://cv-backend.ikbendirk.nl/cv/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',},
@@ -89,6 +92,11 @@ const createCV = () => {
     .then(data => {
         console.log('Success:', data);
         createPerson(data.id);
+        if(makeNewSkillAfter === true){
+            createSkill(data.id)
+            window.location.href = `${window.location.pathname}#${data.id}`
+            
+        }
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -154,7 +162,7 @@ const createSkill = (CvId) => {
     .then(data => {
         if(data.success === true){
             console.log('Success:', data);
-            fetchCandidate();
+            fetchCandidate(CvId);
         }
 
         if(data.success === false){
@@ -168,8 +176,8 @@ const createSkill = (CvId) => {
 
 form.saveButton.addEventListener('click', (e)=>{
     e.preventDefault();
-    updateCVData();
-    updatePersonData();
+    // updateCVData();
+    // updatePersonData();
     createCV();
 })
 
@@ -193,7 +201,10 @@ const updatePersonData = () => {
     newData.phoneNumber = form.mobile.value || " ";
     newData.email = form.email.value || " ";
     newData.gender = form.gender.value || "";
-    newData.willingnessToWorkAbroad = document.querySelector("input[type='radio']:checked").value || " ";
+    console.log(document.querySelector("input[type='radio']:checked"));
+    if(document.querySelector("input[type='radio']:checked") != null || document.querySelector("input[type='radio']:checked") != undefined){
+        newData.willingnessToWorkAbroad = document.querySelector("input[type='radio']:checked").value || " ";
+    }
     newData.dateOfBirth = `${form.dateOfBirth.value.split("-")[2]}-${form.dateOfBirth.value.split("-")[1]}-${form.dateOfBirth.value.split("-")[0]}` || " " // 0=year 1=month  2=day
 }
 
@@ -294,14 +305,13 @@ const displayContent = (candidate) => {
 
 ---------------------------------------------------*/
 
-const fetchCandidate = async () => {
-    const res = await fetch(`https://cv-backend.ikbendirk.nl/cv/${candidateID}`)
+const fetchCandidate = async (CvId) => {
+    const res = await fetch(`https://cv-backend.ikbendirk.nl/cv/${CvId}`)
         .then(res => res.json())
         .then(json => json.data)
 
     candidate = res;
     displayContent(candidate);
-    displaySkills(candidate);
     console.log(candidate);
 }
 
@@ -314,18 +324,18 @@ const fetchCandidate = async () => {
 if(candidateID){
     console.log(candidateID)
     form.saveButton.innerHTML = "<i class='fas fa-save'></i>Save Changes"
-    fetchCandidate()
+    fetchCandidate(candidateID)
 } else {
     console.log("no candidate")
     form.saveButton.innerHTML = "<i class='fas fa-save'></i>Add Candidate"
     form.deleteButton.classList.add("hide")
+    showCompetencesOptions(allCompetences);
 }
 
 
 
 //// Add competence
-let allCompetences = ["","HTML", "CSS", "JavaScript", "Nodejs", "GraphQL", "ReactJS", "VueJS", "Angular"];
-let fakeArray = ["HTML","CSS","JavaScript"];
+
 
 const removeAlreadySelectedCompetences = (competences) => {
     console.log(competences)
@@ -366,12 +376,13 @@ const initializeCompetences = (competences) => {
 
 form.addCompetenceButton.addEventListener('click', (e) =>{
     e.preventDefault();
-    if(form.competencesList.value !== ""){
+
+    if(window.location.hash === "" && form.competencesList.value !== ""){
+        createCV(true);
+    }
+
+    if(window.location.hash !== "" && form.competencesList.value !== ""){
         createSkill(candidateID);
-        // fakeArray.push(form.competencesList.value);
-        // console.log(fakeArray);
-        // form.competencesList.selectedIndex = 0;
-        // initializeCompetences();
     }
 })
 
