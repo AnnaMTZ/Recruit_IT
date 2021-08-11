@@ -1,4 +1,4 @@
-const resetButton = document.getElementById('resetBtn');
+const resetButton = document.getElementById('loginBtn');
 const userName = document.getElementById('username');
 const passWord = document.getElementById('password');
 
@@ -88,8 +88,8 @@ function login() {
   );
 }
 
-document.getElementById("secretQuestion").innerHTML = secretQuestion.value;
-document.getElementById("secretAnswer").innerHTML = secretAnswer.value;
+// document.getElementById("secretQuestion").innerHTML = secretQuestion.value;
+// document.getElementById("secretAnswer").innerHTML = secretAnswer.value;
 
 function passwordValidation() {
   var question = document.getElementById("question").value;
