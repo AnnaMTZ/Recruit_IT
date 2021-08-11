@@ -17,6 +17,20 @@ section.hide {
     section.hide {
         display: block;
     }
+
+}
+
+
+
+#logout-button {
+    position: absolute;
+    right: 20px;
+    top: 30px;
+}
+
+#download {
+    position: absolute;
+    right: 90px;
 }
 
 .recruitItImageLanding {
@@ -223,4 +237,12 @@ fieldset {
     nav {
         display: none;
     }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+#recruitItImageLandingtwo {
+    display: none;
+}
 }

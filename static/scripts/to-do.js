@@ -98,3 +98,11 @@ function showColor(button) {
     changeColor.classList.toggle("toggleClass");
     button.classList.toggle("toggleClass");
 }
+
+// if LI is more than 7 days old showColor (automatically toggleClass) 
+setTimeout(function() {
+    const sevenDaysOld = button.parentElement;
+}, 60480000)
+
+// if toggleClass is present than move to top of the list
+// if element.parentElement.id has toggleClass present
