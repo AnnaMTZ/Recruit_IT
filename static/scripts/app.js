@@ -65,7 +65,7 @@ function displayCandidates (candidates)  {
         return `
             <li>
                 <div class="candidate-picture">
-                    <img src="static/img/placeholder-image.png" alt="profile picture">
+                     <img src="static/img/placeholder-image.png" alt="profile picture">
                 </div>
 
                 <div class="candidate-information">

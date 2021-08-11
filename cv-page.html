@@ -15,6 +15,10 @@
     <link href="static/styles/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/styles/main-style.css">
     <link rel="stylesheet" href="static/styles/cv-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js" integrity="sha512-dBB2PGgYedA6vzize7rsf//Q6iuUuMPvXCDybHtZP3hQXCPCD/YVJXK3QYZ2v0p7YCfVurqr8IdcSuj4CCKnGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <title>CV page</title>
 </head>
 
@@ -22,7 +26,7 @@
     <header>
         <img class="recruitItImageLanding" src="/static/img/recruitit_new.png" alt="">
         <a class="button" href="index.html"><i class="fas fa-chevron-left"></i></a>
-        <button><i class="fas fa-download"></i></button>
+        <button id="download"><i  class="fas fa-download"></i></button>
     </header>
 
     <nav>
@@ -34,7 +38,7 @@
         </ul>
     </nav>
 
-    <main>
+    <main id="downloadAll">
         <form action="">
             <fieldset id="name-and-photo">
                 <div class="candidate-photo">
@@ -178,11 +182,12 @@
                     </datalist>
                 </div>
 
+                <form id="login" onsubmit="process(event)"></form>
                 <div class="personal-data-field">
                     <label for="mobile-number">Mobile number:</label>
-                    <input type="tel" id="mobile-number" placeholder="06-12345678">
+                    <input type="tel" id="phone">
                 </div>
-
+                </form>
                 <div class="personal-data-field">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" placeholder="john-doe@recruitit.com">
