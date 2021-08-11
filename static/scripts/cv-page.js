@@ -18,7 +18,7 @@ let form = {
         global: document.getElementById("work-global")
     },
 
-    mobile: document.getElementById("mobile-number"),
+    mobile: document.getElementById("phone"),
     email: document.getElementById("email"),
 
     gender: document.getElementById("gender"),
@@ -410,6 +410,8 @@ window.onload = function () {
             html2pdf().from(invoice).set(opt).save();
         })
 }
+
+console.log(document.getElementById('phone'))
 
 /*---------------------------------------------------*/
 //              Scroll to sections

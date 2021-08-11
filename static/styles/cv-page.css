@@ -7,7 +7,7 @@ header {
 }
 
 header a.button {
-    order: -1;
+    
     padding: 18px 13px;
     flex-basis: 55px;
 }

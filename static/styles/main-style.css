@@ -70,7 +70,10 @@ nav ul li a:hover {
     border: 2px solid #fff;
 }
 
+
+
 a.button,
+button:visited a i,
 button {
     background: #000;
     padding: 18px 22px;
