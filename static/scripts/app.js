@@ -46,6 +46,12 @@ const fetchCandidates = async () => {
         .then(json => json.data)
 
     candidateList = Object.entries(res);
+    for(i=Math.round((candidateList.length - 1) / 4); i<candidateList.length; i+=6){
+        console.log(i)
+        candidateList[i][1].outdated = true;
+    }
+    console.log(candidateList)
+    candidateList = Object.entries(res);
     displayCandidates(candidateList);
     showCvNumbers();
     console.log(candidateList);
@@ -181,7 +187,7 @@ searchBar.addEventListener('input', (e) => {
 
     if(searchString ==="!OUTDATED"){
         searchBar.classList.add("specialCommand")
-        // showOutdatedcvs();
+        showOutdatedcvs();
     } else {
         searchBar.classList.remove("specialCommand")
 
@@ -207,15 +213,18 @@ function showOutdatedcvs(){
     resultsArray =[]
     searchBar.value = "!OUTDATED";
     searchBar.classList.add("specialCommand")
-    const filteredCandidates = candidateList.filter(candidate => {
-        return  candidate.outdated === true
+    const filteredCandidates = candidateList.filter(([key, value]) => {
+        return  value.outdated === true
     })
     console.log(filteredCandidates)
     resultsArray = resultsArray.concat(filteredCandidates);
 }
 
 function showCvNumbers(){
-    let numberofoutdatedcvs = 0;
+    let allOutdatedCvs = candidateList.filter(([key, value]) => {
+        return  value.outdated === true
+    })
+    let numberofoutdatedcvs = allOutdatedCvs.length;
 
     if(numberofoutdatedcvs <= 0){
         outDatedCvLink.innerHTML = ``
