@@ -1,44 +1,12 @@
+const radioButtons = document.querySelectorAll("input[type='radio']")
 const outDatedCvLink = document.getElementById("link-to-outdated-cvs");
 const outDatedCvText = document.getElementById("cv-up-to-date-status");
 
 const competencesList = ["HTML", "CSS", "JavaScript", "Nodejs", "GraphQL", "ReactJS", "VueJS", "Angular"];
-// const candidateList = [
-//     {
-//         name: "Redmar",
-//         lastName: "Woest",
-//         profession: "Front end developer",
-//         skills: ["HTML", "CSS", "JavaScript", "Nodejs"],
-//         lastUpdated: "13-05-2020",
-//         outdated: true
-//     },
-
-//     {
-//         name: "Anna",
-//         lastName: "Mykhailenko",
-//         profession: "Lead front end developer",
-//         skills: ["CSS", "JavaScript", "Nodejs"],
-//         lastUpdated: "13-05-2020",
-//         outdated: false
-//     },
-//     {
-//         name: "Ken",
-//         lastName: "Cheung",
-//         profession: "Data scientist",
-//         skills: ["HTML", "CSS", "JavaScript"],
-//         lastUpdated: "13-05-2020",
-//         outdated: false
-//     },
-//     {
-//         name: "Firenzo",
-//         lastName: "Jorden",
-//         profession: "Back end developer",
-//         skills: ["HTML", "JavaScript", "Nodejs", "GraphQL"],
-//         lastUpdated: "13-05-2020",
-//         outdated: true
-//     }
-// ]
 
 let candidateList;
+let searchString;
+let resultsArray = [];
 
 const fetchCandidates = async () => {
     const res = await fetch('https://cv-backend.ikbendirk.nl/cvs')
@@ -52,6 +20,7 @@ const fetchCandidates = async () => {
     }
     console.log(candidateList)
     candidateList = Object.entries(res);
+    resultsArray = candidateList;
     displayCandidates(candidateList);
     showCvNumbers();
     console.log(candidateList);
@@ -90,7 +59,6 @@ function displayCandidates (candidates)  {
 
 
 const searchBar = document.getElementById("searchCandidates");
-let resultsArray = [];
 
 function filterName(str){
     str.forEach(i => {
@@ -183,12 +151,25 @@ function filterSkills(str){
 
 searchBar.addEventListener('input', (e) => {
     resultsArray = [];
-    let searchString = e.target.value;
+    searchString = e.target.value;
+    filterSearchBarInit(searchString);
 
+    // console.log(Array.from(new Set(resultsArray)));
+    // displayCandidates(Array.from(new Set(resultsArray)));
+
+    if(document.querySelector("input[type='radio']:checked")){
+        filterWillingnessToWorkAbroad(document.querySelector("input[type='radio']:checked").value)
+    }
+    
+})
+
+function filterSearchBarInit(searchString){
+    // resultsArray = [];
+    console.log(searchString)
     if(searchString ==="!OUTDATED"){
         searchBar.classList.add("specialCommand")
         showOutdatedcvs();
-    } else {
+    } else if(searchString !== undefined) {
         searchBar.classList.remove("specialCommand")
 
         let strippedInput = searchString.replace(/\s?,\s/g, ',').split(",")
@@ -197,11 +178,13 @@ searchBar.addEventListener('input', (e) => {
         filterName(strippedInput);
         filterSkills(strippedInput);
         filterCity(strippedInput);
+    } else if(searchString == undefined){
+        resultsArray = candidateList;
     }
 
     console.log(Array.from(new Set(resultsArray)));
     displayCandidates(Array.from(new Set(resultsArray)));
-})
+}
 
 
 outDatedCvLink.addEventListener("click", ()=>{
@@ -237,3 +220,50 @@ function showCvNumbers(){
     }
 }
 fetchCandidates();
+
+
+console.log(document.querySelectorAll("input[type='radio']"))
+
+
+function filterWillingnessToWorkAbroad(region){
+    console.log(region.toLowerCase());
+    console.log(resultsArray);
+
+    const peopleWillingToWorkAbroad = resultsArray.filter(([key, value]) => {
+        if(value.person){
+            if(value.person.willingnessToWorkAbroad){
+                console.log(key, value.person.willingnessToWorkAbroad)
+                if(region.toLowerCase() == "netherlands"){
+                    return true
+                } else if(region.toLowerCase() == "benelux"){
+                    return  value.person.willingnessToWorkAbroad == "benelux" || 
+                            value.person.willingnessToWorkAbroad == "europe" ||
+                            value.person.willingnessToWorkAbroad == "global"
+                } else if(region.toLowerCase() == "europe"){
+                            return value.person.willingnessToWorkAbroad == "europe" || 
+                            value.person.willingnessToWorkAbroad == "global"
+                } else if(region.toLowerCase() == "global"){
+                    return value.person.willingnessToWorkAbroad == "global";
+                }
+            } else {
+                return false;
+            }
+        }
+    })
+    resultsArray = peopleWillingToWorkAbroad;
+    console.log(Array.from(new Set(resultsArray)));
+    displayCandidates(Array.from(new Set(resultsArray)));
+}
+
+radioButtons.forEach(element => {
+    element.addEventListener("change", ()=>{
+        console.log(searchBar.value);
+        if(searchBar.value ==="!OUTDATED" || searchString==="!OUTDATED"){
+            searchBar.value = "";
+            searchString="";
+            searchBar.classList.remove("specialCommand")
+        }
+        filterSearchBarInit(searchString);
+        filterWillingnessToWorkAbroad(document.querySelector("input[type='radio']:checked").value)
+    })
+});
