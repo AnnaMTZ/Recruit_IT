@@ -149,21 +149,90 @@ function filterSkills(str){
         }
     });
 
-    console.log(competencesSearchTerms);
+    console.log(candidateList);
 
+
+    // candidateList.forEach(([candidateID, value]) => {
+    //     let arrayWithCompetences = []
+    //     if(value.skills){
+    //         Object.entries(value.skills).forEach(([candidateSkillID, value]) => {
+    //             if(value.name){
+    //                 arrayWithCompetences.push(value.name);
+    //             }
+    //         });
+    //     }
+    //     console.log(candidateID, arrayWithCompetences);
+    //     console.log(competencesSearchTerms);
+    // });
     if(competencesSearchTerms.length !== 0){
-        const filteredCandidates = candidateList.filter(candidate => {
-            const candidateSkills = candidate.skills.map(skill => skill.toLowerCase());
+        const filteredCandidates = candidateList.filter(([candidateID, value]) => {
+            let arrayWithCompetences = []
+            if(value.skills){
+                Object.entries(value.skills).forEach(([candidateSkillID, value]) => {
+                    if(value.name){
+                        arrayWithCompetences.push(value.name);
+                    }
+                });
+            }
+            const candidateSkills = arrayWithCompetences.map(skill => skill.toLowerCase());
+            console.log(candidateID, arrayWithCompetences);
+            console.log(competencesSearchTerms);
             let candidateSkillsMatches = competencesSearchTerms.every((val,i)=>{
                 console.log(val);
                 return (candidateSkills.indexOf(val) !== -1)
             })
             console.log(candidateSkillsMatches);
             return candidateSkillsMatches;
-        })
-
-        resultsArray = resultsArray.concat(filteredCandidates);   
+        });
+        resultsArray = resultsArray.concat(filteredCandidates); 
     }
+
+    // if(competencesSearchTerms.length !== 0){
+    //     const filteredCandidates = candidateList.filter(candidate => {
+    //         console.log(Object.entries(candidate))
+    //         const candidateSkills = arrayWithCompetences.map(skill => skill.toLowerCase());
+    //         let candidateSkillsMatches = competencesSearchTerms.every((val,i)=>{
+    //             console.log(val);
+    //             return (candidateSkills.indexOf(val) !== -1)
+    //         })
+    //         console.log(candidateSkillsMatches);
+    //         return candidateSkillsMatches;
+    //     })
+
+    //     resultsArray = resultsArray.concat(filteredCandidates);   
+    // }
+
+
+    // if(competencesSearchTerms.length !== 0){
+    //     const filteredCandidates = Object.entries(candidateList).filter(([key,value]) => {
+    //         console.log(key, value)
+    //         // const candidateSkills = candidate.skills.map(skill => skill.toLowerCase());
+    //         // let candidateSkillsMatches = competencesSearchTerms.every((val,i)=>{
+    //         //     console.log(val);
+    //         //     return (candidateSkills.indexOf(val) !== -1)
+    //         // })
+    //         // console.log(candidateSkillsMatches);
+    //         // return candidateSkillsMatches;
+    //     })
+
+    //     resultsArray = resultsArray.concat(filteredCandidates);   
+    // }
+    
+
+    // if(competencesSearchTerms.length !== 0){
+    //     const filteredCandidates = candidateList.filter(candidate => {
+    //         console.log(Object.entries(candidate))
+    //         const candidateSkills = candidate.skills.map(skill => skill.toLowerCase());
+    //         let candidateSkillsMatches = competencesSearchTerms.every((val,i)=>{
+    //             console.log(val);
+    //             return (candidateSkills.indexOf(val) !== -1)
+    //         })
+    //         console.log(candidateSkillsMatches);
+    //         return candidateSkillsMatches;
+    //     })
+
+    //     resultsArray = resultsArray.concat(filteredCandidates);   
+    // }
 }
 
 searchBar.addEventListener('input', (e) => {
