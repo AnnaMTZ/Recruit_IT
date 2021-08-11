@@ -1,44 +1,45 @@
 const btnAddExperience = document.getElementById('add_experience_btn');
 const experienceSection = document.getElementById('work-experience');
+const saveCandidateBtn = document.getElementById('saveCandidateButton');
+
+const allExperiences = [];
+
+ function updateCandidateExperience (expSection) {
+const companyName = expSection.querySelector('#company-name');
+const role = expSection.querySelector('#work-experience-role');
+const startDate = expSection.querySelector('#job-date-start');
+const endDate = expSection.querySelector('#job-date-end');
+const responsibilities = expSection.querySelector('#obligations');
+
+  let workExperience = {
+    jobId: "optional",
+    from: startDate.value, // start date
+    until: endDate.value, // end date
+    function: role.value, // role
+    description: responsibilities.value, // responsibilities
+      companyName: companyName.value // company name
+  }
+
+allExperiences.push(workExperience);
+}
 
 
+const saveChanges = (e) => {
+    e.preventDefault();
+expArr.forEach(experience => {
+    updateCandidateExperience(experience);
+})
+console.log(allExperiences); /// array with objects with all the added experiences
+}
 
-// Fr the workExperience object
-// const companyName = document.getElementById('company-name');
-// const role = document.getElementById('work-experience-role');
-// const startDate = document.getElementById('job-date-start');
-// const endDate = document.getElementById('job-date-end');
-// const responsibilities = document.getElementById('obligations');
-
-
-
-// const workExperience = {
-//     jobId: "optional",
-//     from: "", // start date
-//     until: "", // end date
-//     function: "", // role
-//     description: "", // responsibilities
-//       companyName: "" // company name
-//   }
-
-//   const updateCandidateExperience = () => {
-// workExperience.from = startDate.value,
-// workExperience.until = endDate.value, 
-// workExperience.function = role.value,
-// workExperience.description = responsibilities.value,
-// workExperience.companyName = companyName.value
-// }
-
-
+let expArr = [experienceSection];
 
 const addExperience = (e) => {
  e.preventDefault();
 let expNr =  experienceSection.childElementCount;
 
-    /// Can't click on new 'add experience' buttons
-    // console.log(workExperience)
     let div = document.createElement("div");
-    div.innerHTML = `<br><br><fieldset id="work-experience">
+    div.innerHTML = `<br><br><fieldset id="work-experience${expNr}">
  <legend><h2>Work experience</h2></legend>
 
     <div class="work-experience-part">
@@ -78,9 +79,11 @@ let expNr =  experienceSection.childElementCount;
 // experienceSection.innerHTML += experienceSection.innerHTML;
 experienceSection.appendChild(div);
 const btnAddMoreExperience = document.getElementById(`add_experience_btn${expNr}`);
+const newExperienceSection = document.getElementById(`work-experience${expNr}`);
+expArr.push(newExperienceSection);
 btnAddMoreExperience.addEventListener('click', addExperience);
-// updateCandidateExperience();
+
 }
 
 btnAddExperience.addEventListener('click', addExperience);
-
+saveCandidateBtn.addEventListener('click', saveChanges)
