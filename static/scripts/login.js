@@ -1,4 +1,4 @@
-const loginButton = document.getElementById('loginBtn');
+const resetButton = document.getElementById('resetBtn');
 const userName = document.getElementById('username');
 const passWord = document.getElementById('password');
 
@@ -25,14 +25,16 @@ function isValidEmail(input) {
 }
 
 /// Event Listeners
-loginButton.addEventListener('click', login);
+resetButton.addEventListener('click', login);
 
 const users = [
   {
     email: 'ken@capgemini.com',
     password: 'ken123',
     name: 'ken',
-    admin: true
+    admin: true,
+    secretQuestion: 'What is the name of your first pet?',
+    secretAnswer: 'Snoop Dogg'
   },
   {
     email: 'anna@capgemini.com',
@@ -54,23 +56,60 @@ const users = [
   }
 ];
 
+// function login() {
+//   var username = document.getElementById("username").value;
+//   var password = document.getElementById("password").value;
+
+//   users.forEach(user => {
+//     if (user.email === username && user.password === password) {
+//       window.location = "./index.html";
+//     } else {
+//       document.getElementById("loginError").innerHTML = "Wrong login credentials"
+//     }
+//   }
+//   );
+// }
+
 function login() {
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
+  var username = document.getElementById("username");
+  var password = document.getElementById("password");
+  var loginError = document.getElementById("loginError");
 
   users.forEach(user => {
-    if (user.email === username && user.password === password) {
+    if (user.email === username.value && user.password === password.value) {
       window.location = "./index.html";
     } else {
-      document.getElementById("loginError").innerHTML = "Wrong login credentials"
+      loginError.innerHTML = "Wrong login credentials";
+      loginError.style.color = "#f74040";
+      username.style.border = "1px solid #f74040";
+      password.style.border = "1px solid #f74040";
     }
   }
   );
 }
 
-  // console.log(username);
-  // var password = document.getElementById("password").value;
-  // if (username === users[0].email && password === users[0].password) {
-  //   console.log(username);
-  //   window.location = "./index.html";
-  // }
+document.getElementById("secretQuestion").innerHTML = secretQuestion.value;
+document.getElementById("secretAnswer").innerHTML = secretAnswer.value;
+
+function passwordValidation() {
+  var question = document.getElementById("question").value;
+  var answer = document.getElementById("answer").value;
+
+  users.forEach(reset => {
+    if (reset.secretQuestion === question && reset.secretAnswer === answer) {
+      window.location = "./login.html";
+    } else {
+      document.getElementById("wrongAnswer").innerHTML = "Wrong secret answer"
+    }
+  }
+  );
+}
+
+
+
+// console.log(username);
+// var password = document.getElementById("password").value;
+// if (username === users[0].email && password === users[0].password) {
+//   console.log(username);
+//   window.location = "./index.html";
+// }
