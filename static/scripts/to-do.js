@@ -4,7 +4,7 @@ var todoList = document.getElementById("to-do-list-li");
 var button = document.getElementById("btn-add-todo");
 const pendingTasks = document.getElementById("pendingTasks");
 let toDoListDataObject;
-let toDoListData;
+let toDoListData = []
 
 const fetchToDos = async () => {
     const res = await fetch('https://cv-backend.ikbendirk.nl/todos')
@@ -12,7 +12,7 @@ const fetchToDos = async () => {
         .then(json => json.data)
 
         toDoListDataObject = res;
-        toDoListData = Object.entries(res);
+        toDoListData = Object.entries(toDoListDataObject);
         displayToDos(toDoListData);
         console.log(toDoListData);
 }

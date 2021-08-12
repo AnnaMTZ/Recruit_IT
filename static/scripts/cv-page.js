@@ -360,7 +360,6 @@ function showCompetencesOptions(competences) {
 
 function showCompetencesList(competences) {
     const htmlString = competences.map(competence => {
-        console.log(competence);
         return `
             <li id=${competence}>${competence}<i class="fas fa-times" class="deleteCompetence"></i></li>
         `;
