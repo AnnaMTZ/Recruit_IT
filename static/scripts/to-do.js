@@ -21,7 +21,7 @@ function displayToDos(toDos) {
         console.log(toDoInfo);
         return `
             <li id="${key}"> 
-                <button class="color_btn urgent colorBtn" onclick="showColor(this)" id="btnUrgent"><i class="fas fa-exclamation"></i></button>
+                <button class="color_btn urgent colorBtn" onclick="makeUrgent(this)" id="btnUrgent"><i class="fas fa-exclamation"></i></button>
                 ${toDoInfo.taskName} 
                 <button class="deleteBtn" onclick="deleteTask(this)";><i class="fas fa-trash"></i></button>
             </li>
@@ -59,8 +59,16 @@ button.addEventListener("click", function(e){
     .catch((error) => {console.log('there was an error', error)})
 })
 
-const updatePostData = () => {
-    postData.taskName = input.value
+const updatePostData = (todoId, urgent, taskName) => {
+    if(todoId) {
+        postData.todoId = todoId
+        postData.taskName = taskName
+        postData.urgent = urgent
+    } else {
+        postData.urgent = urgent
+        postData.taskName = input.value
+    }
+
 }
 
 
@@ -93,16 +101,65 @@ input.addEventListener("keyup", function () {
     }
 })
 
-function showColor(button) {
+function makeUrgent(button) {
+    console.log(button.parentElement.id)
     const changeColor = button.parentElement;
     changeColor.classList.toggle("toggleClass");
     button.classList.toggle("toggleClass");
+    console.log(changeColor.classList.contains("toggleClass"))
+    button.classList.add("disabled");
+    // if(changeColor =) {
+    // }
+    
+    updatePostData(button.parentElement.id, changeColor.classList.contains("toggleClass"), )
+
+    fetch('https://cv-backend.ikbendirk.nl/todo/',{
+    method: 'POST',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(postData),
+
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('success', data); 
+        fetchToDos()
+})
+    .catch((error) => {console.log('there was an error', error)})
 }
 
+
+
+
+
 // if LI is more than 7 days old showColor (automatically toggleClass) 
-setTimeout(function() {
-    const sevenDaysOld = button.parentElement;
-}, 60480000)
+// setTimeout(function() {
+//     const sevenDaysOld = button.parentElement;
+// }, 60480000)
 
 // if toggleClass is present than move to top of the list
 // if element.parentElement.id has toggleClass present
+
+
+// $(document).ready(function() {
+//     $('button.parentElement').click(function() {
+//       var clicked = $(this);
+//       var previousAll = clicked.prevAll();
+
+//       if(previousAll.length > 0) {
+//         var top = $(previousAll[previousAll.length - 1]);
+//         var previous = $(previousAll[0]);
+//         var moveUp = clicked.attr('offsetTop') - top.attr('offsetTop');
+//         var moveDown = (clicked.offset().top + clicked.outerHeight()) - (previous.offset().top + previous.outerHeight());
+
+//         clicked.css('position', 'relative');
+//         previousAll.css('position', 'relative');
+//         clicked.animate({'top': -moveUp});
+//         previousAll.animate({'top': moveDown}, {complete: function() {
+//           clicked.parent().prepend(clicked);
+//           clicked.css({'position': 'static', 'top': 0});
+//           previousAll.css({'position': 'static', 'top': 0}); 
+//         }});
+//       }
+//     });
+//   });
+

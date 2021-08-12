@@ -59,14 +59,14 @@ const insertFirstName = (candidateInfo) => hasFirstName(candidateInfo) ?  candid
 const insertLastName = (candidateInfo) => hasLastName(candidateInfo) ?  candidateInfo.person.lastName : "van Straten"
 
 const hasCity = (candidateInfo) => (candidateInfo.hasOwnProperty("person") && candidateInfo.person.address.hasOwnProperty("city"))
+                // <div class="candidate-picture">
+                //      <img src="static/img/placeholder-image.png" alt="profile picture">
+                // </div>
 
 function displayCandidates (candidates)  {
     const htmlString = candidates.map(([key, candidateInfo]) => {
         return `
             <li>
-                <div class="candidate-picture">
-                     <img src="static/img/placeholder-image.png" alt="profile picture">
-                </div>
 
                 <div class="candidate-information">
                     <h3>
